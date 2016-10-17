@@ -1,5 +1,5 @@
 package main;
-import view.Gc_MainWindow;
+import view.MainWindow;
 
 
 public class Main {
@@ -7,6 +7,6 @@ public class Main {
 	public static void main(String[] args) 
 	{
 		System.out.println("Here we go !");
-		Gc_MainWindow start = new Gc_MainWindow();
+		MainWindow start = new MainWindow();
 	}
 }

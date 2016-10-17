@@ -1,8 +1,11 @@
+/*
+ * 
+ */
 package entity;
 
 import java.util.ArrayList;
 
-public class Developer 
+public class Developer extends Platform
 {
 	private ArrayList<Developer> _listDev;
 	private int _id_developer;

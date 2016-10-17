@@ -14,10 +14,10 @@ import javax.swing.UnsupportedLookAndFeelException;
  *
  * @author iain
  */
-public class Gc_MainWindow  extends JFrame implements ActionListener
+public class MainWindow  extends JFrame implements ActionListener
 {
 	
-	public Gc_MainWindow()
+	public MainWindow()
 	{
 		testLookAndFeel();
 		super.setTitle("GameCatalog");
