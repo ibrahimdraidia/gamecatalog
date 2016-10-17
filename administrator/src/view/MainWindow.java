@@ -1,5 +1,5 @@
 /*
- * Main page view for the gamecatalog.
+ * Main page view for the gamycatalog.
  */
 package view;
 
@@ -7,8 +7,14 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+<<<<<<< HEAD
 import javax.swing.JPanel;
+=======
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+>>>>>>> f0b0fa66addbe52cdd3cdbe2f315fa8b7c686fe8
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -18,7 +24,23 @@ import javax.swing.UnsupportedLookAndFeelException;
  */
 public class MainWindow  extends JFrame implements ActionListener
 {
-	
+	//Game
+	private JLabel     lb_name_game;
+	private JTextField tf_name_game;
+	//Editor
+	private JLabel     lb_name_editor;
+	private JTextField tf_name_editor;
+	//Developer
+	private JLabel     lb_listDev;
+	private JComboBox  cb_listDev;
+	//Platform
+	private JLabel     lb_platform;
+	private JComboBox  cb_platform;
+	//Type
+	private JLabel     lb_type;
+	private JComboBox  cb_type;
+
+
 	public MainWindow()
 	{
 		
@@ -30,6 +52,16 @@ public class MainWindow  extends JFrame implements ActionListener
 		super.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 	}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *	Objects
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ */
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *	Pannels
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ */
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *	Controlers
