@@ -1,5 +1,5 @@
 /*
- * Main page view for the gamecatalog.
+ * Main page view for the gamycatalog.
  */
 package view;
 
@@ -32,6 +32,9 @@ public class MainWindow  extends JFrame implements ActionListener
 	private JLabel     lb_platform;
 	private JComboBox  cb_platform;
 	//Type
+	private JLabel     lb_type;
+	private JComboBox  cb_type;
+
 
 	public MainWindow()
 	{
@@ -41,6 +44,16 @@ public class MainWindow  extends JFrame implements ActionListener
 		super.setMinimumSize(new Dimension(1024, 800));
 		super.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *	Objects
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ */
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *	Pannels
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ */
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *	Controlers
