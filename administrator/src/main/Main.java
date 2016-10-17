@@ -1,4 +1,5 @@
 package main;
+import view.Gc_MainWindow;
 
 public class Main {
 
