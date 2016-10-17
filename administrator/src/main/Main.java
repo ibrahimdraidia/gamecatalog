@@ -1,12 +1,15 @@
 package main;
+import view.Gc_MainWindow;
 
-import entity.Game;
 
 public class Main {
 
 	public static void main(String[] args) 
 	{
-		new Game();
+	
+		System.out.println("Here we go !");
+		Gc_MainWindow start = new Gc_MainWindow();
+
 	}
 
 }
