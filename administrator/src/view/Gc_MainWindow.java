@@ -20,7 +20,7 @@ public class Gc_MainWindow  extends JFrame implements ActionListener
 	public Gc_MainWindow()
 	{
 		testLookAndFeel();
-		super.setTitle("Relative chronology");
+		super.setTitle("GameCatalog");
 		super.setVisible(true);
 		super.setMinimumSize(new Dimension(1024, 800));
 		super.setDefaultCloseOperation(EXIT_ON_CLOSE);
