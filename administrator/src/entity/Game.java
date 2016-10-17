@@ -1,12 +1,12 @@
 /*
- * The Game; it all strts here my friends, it all starts here.
+ * The Game; it all starts here my friends, it all starts here.
  */
 package entity;
 
 public class Game extends Editor
 {
 	private int _id_game;
-	private String _nom_game;
+	private String _name_game;
 	
 	public Game()
 	{
@@ -24,11 +24,11 @@ public class Game extends Editor
 
 	public String getNom_game()
 	{
-		return _nom_game;
+		return _name_game;
 	}
 
-	public void setNom_game(String _nom_game)
+	public void setNom_game(String _name_game)
 	{
-		this._nom_game = _nom_game;
+		this._name_game = _name_game;
 	}
 }

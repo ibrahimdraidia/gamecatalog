@@ -3,6 +3,8 @@
  */
 package entity;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author iain
@@ -10,7 +12,7 @@ package entity;
 public class Platform extends Type
 {
 	private int _id_platform;
-	private String _platform;
+	private ArrayList<String> _platform;
 
 	public Platform()
 	{
@@ -26,12 +28,12 @@ public class Platform extends Type
 		this._id_platform = _id_platform;
 	}
 
-	public String getPlatform()
+	public ArrayList getPlatform()
 	{
 		return _platform;
 	}
 
-	public void setPlatform(String _platform)
+	public void setPlatform(ArrayList _platform)
 	{
 		this._platform = _platform;
 	}

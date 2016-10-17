@@ -6,8 +6,10 @@ package view;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -18,8 +20,19 @@ import javax.swing.UnsupportedLookAndFeelException;
 public class MainWindow  extends JFrame implements ActionListener
 {
 	//Game
-	private JLabel one;
-	
+	private JLabel     lb_name_game;
+	private JTextField tf_name_game;
+	//Editor
+	private JLabel     lb_name_editor;
+	private JTextField tf_name_editor;
+	//Developer
+	private JLabel     lb_listDev;
+	private JComboBox  cb_listDev;
+	//Platform
+	private JLabel     lb_platform;
+	private JComboBox  cb_platform;
+	//Type
+
 	public MainWindow()
 	{
 		testLookAndFeel();
