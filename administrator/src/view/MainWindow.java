@@ -51,6 +51,8 @@ public class MainWindow  extends JFrame implements ActionListener
 		super.setMinimumSize(new Dimension(600, 400));
 		super.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
+		
+		
 	}
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

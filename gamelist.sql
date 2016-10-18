@@ -1,104 +1,69 @@
-/*==============================================================*/
-/* Nom de SGBD :  MySQL 5.0                                     */
-/* Date de création :  17/10/2016 11:16:39                      */
-/*==============================================================*/
 
-/*CREATE DATABASE IF NOT EXISTS `gamecatalog` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;*/
 USE `draidia2_gamecatalog`;
 
 
-/*==============================================================*/
-/* Table : DEVELOPER                                            */
-/*==============================================================*/
 CREATE TABLE IF NOT EXISTS `DEVELOPER`(
    ID_DEV               int(11) not null AUTO_INCREMENT,
    NAME_DEV             varchar(35) not null,
    primary key (ID_DEV)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8;
 
-/*==============================================================*/
-/* Table : DEVELOPS                                             */
-/*==============================================================*/
 CREATE TABLE IF NOT EXISTS `DEVELOPS`(
    ID_DEV               int(11) not null,
    ID_GAME              int(11) not null,
    primary key (ID_DEV, ID_GAME)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8;
 
-/*==============================================================*/
-/* Table : EDITS                                                */
-/*==============================================================*/
 CREATE TABLE IF NOT EXISTS `EDITS`(
    ID_EDITOR            int(11) not null,
    ID_GAME              int(11) not null,
    primary key (ID_EDITOR, ID_GAME)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8;
 
-/*==============================================================*/
-/* Table : EDITOR                                               */
-/*==============================================================*/
 CREATE TABLE IF NOT EXISTS `EDITOR`(
    ID_EDITOR            int(11) not null,
    NAME_EDITOR          varchar(35) not null,
    primary key (ID_EDITOR)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8;
 
-/*==============================================================*/
-/* Table : GENRE                                                */
-/*==============================================================*/
 CREATE TABLE IF NOT EXISTS `GENRE`(
    ID_GENRE             int(11) not null AUTO_INCREMENT,
    NAME_GENRE           varchar(35) not null,
    primary key (ID_GENRE)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8;
 
-/*==============================================================*/
-/* Table : GAME                                                 */
-/*==============================================================*/
 CREATE TABLE IF NOT EXISTS `GAME`(
    ID_GAME              int(11) not null AUTO_INCREMENT,
    NAME_GAME            varchar(50) not null,
-   PIC_GAME             varchar,
+   PIC_GAME             text,
    SUMMARY_GAME         text,
    primary key (ID_GAME)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8;
 
-/*==============================================================*/
-/* Table : OF_THE_GENRE                                         */
-/*==============================================================*/
 CREATE TABLE IF NOT EXISTS `OF_THE_GENRE`(
    ID_GAME              int(11) not null,
    ID_GENRE             int(11) not null,
    primary key (ID_GAME, ID_GENRE)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8;
 
-/*==============================================================*/
-/* Table : ON_THE_PLATFORM                                      */
-/*==============================================================*/
-CREATE TABLE IF NOT EXISTS `ON_THE_PLATFORME`(
+CREATE TABLE IF NOT EXISTS `ON_THE_PLATFORM`(
    ID_GAME              int(11) not null,
    ID_PLATFORM          int(11) not null,
    RELEASE_DATE         date not null,
    primary key (ID_GAME, ID_PLATFORM)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8;
 
-/*==============================================================*/
-/* Table : PLATFORM                                             */
-/*==============================================================*/
 CREATE TABLE IF NOT EXISTS `PLATFORM`(
    ID_PLATFORM         int(11) not null,
    NAME_PLATFORM       varchar(35) not null,
    primary key (ID_PLATFORM)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8;
 
-/*==============================================================*/
-/* Table : FK                                                   */
-/*==============================================================*/
 
 alter table DEVELOPS add constraint FK_DEVELOPED foreign key (ID_DEV)
       references DEVELOPER (ID_DEV) on delete restrict on update restrict;
 
-alter table DEVELOPS add constraint FK_DEVELOPED_BY foreign key (ID_JEU)
+alter table DEVELOPS add constraint FK_DEVELOPED_BY foreign key (ID_GAME)
       references GAME (ID_GAME) on delete restrict on update restrict;
 
 alter table EDITS add constraint FK_EDITS foreign key (ID_EDITOR)
@@ -119,9 +84,6 @@ alter table ON_THE_PLATFORM add constraint FK_SUPPORTED_BY foreign key (ID_GAME)
 alter table ON_THE_PLATFORM add constraint FK_SUPPORTS foreign key (ID_PLATFORM)
       references PLATFORM (ID_PLATFORM) on delete restrict on update restrict;
 
-/*==============================================================*/
-/* Table : INSERTS                                              */
-/*==============================================================*/
 
 INSERT INTO `DEVELOPER` (`ID_DEV`, `NAME_DEV`) VALUES
 (1, 'Crypton Future Media'),

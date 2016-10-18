@@ -18,10 +18,10 @@ public class Database
 	
 	public Database()
 	{
-		_dbhost = "localhost";
-		_dbname = "";
-		_username = "root";
-		_password = "";
+		_dbhost = "ibrahimdraidia.com";
+		_dbname = "draidia2_gamecatalog";
+		_username = "draidia2_afpa";
+		_password = "afpa2016";
 		_url = "jdbc:mysql://"+_dbhost+"/"+_dbname+"?useSSL=false";
 	}
 	
