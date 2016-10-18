@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* Nom de SGBD :  MySQL 5.0                                     */
-/* Date de création :  17/10/2016 11:16:39                      */
+/* Date de crÃ©ation :  17/10/2016 11:16:39                      */
 /*==============================================================*/
 
 CREATE DATABASE IF NOT EXISTS `draidia2_gamecatalog` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
@@ -20,18 +20,18 @@ CREATE TABLE IF NOT EXISTS `DEVELOPER`(
 /* Table : DEVELOPS                                             */
 /*==============================================================*/
 CREATE TABLE IF NOT EXISTS `DEVELOPS`(
-   ID_DEV               int(11) not null,
-   ID_GAME              int(11) not null,
-   primary key (ID_DEV, ID_GAME)
+   ID_GAME               int(11) not null,
+   ID_DEV              int(11) not null,
+   primary key (ID_GAME, ID_DEV)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8;
 
 /*==============================================================*/
 /* Table : EDITS                                                */
 /*==============================================================*/
 CREATE TABLE IF NOT EXISTS `EDITS`(
-   ID_EDITOR            int(11) not null,
-   ID_GAME              int(11) not null,
-   primary key (ID_EDITOR, ID_GAME)
+   ID_GAME            int(11) not null,
+   ID_EDITOR              int(11) not null,
+   primary key (ID_GAME, ID_EDITOR)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8;
 
 /*==============================================================*/
@@ -58,6 +58,7 @@ CREATE TABLE IF NOT EXISTS `GENRE`(
 CREATE TABLE IF NOT EXISTS `GAME`(
    ID_GAME              int(11) not null AUTO_INCREMENT,
    NAME_GAME            varchar(50) not null,
+   RELEASE_DATE         date not null,
    PIC_GAME             text,
    SUMMARY_GAME         text,
    primary key (ID_GAME)
@@ -78,7 +79,6 @@ CREATE TABLE IF NOT EXISTS `OF_THE_GENRE`(
 CREATE TABLE IF NOT EXISTS `ON_THE_PLATFORM`(
    ID_GAME              int(11) not null,
    ID_PLATFORM          int(11) not null,
-   RELEASE_DATE         date not null,
    primary key (ID_GAME, ID_PLATFORM)
 )ENGINE = InnoDB DEFAULT CHARSET=utf8;
 
@@ -179,19 +179,113 @@ INSERT INTO `GENRE` (`ID_GENRE`, `NAME_GENRE`) VALUES
 (9, 'Combat'),
 (10, 'Survival-Horror');
 
-INSERT INTO `GAME` (`ID_GAME`, `NAME_GAME`, `SUMMARY_GAME`) VALUES
-(1, 'Hatsune Miku Project Diva X', 'Hatsune Miku : Project Diva X disponible sur PS4, est un jeu d\'action/rythme mettant en avant la chanteuse numérique de renommée mondiale, Hatsune Miku. Menez le meilleur show jamais connu avec Miku et ses amis. Afin que l\'excitation soit à son comble, il sera possible de débloquer des effets de transformation spéciaux.' ),
-(2, 'Battlefield 1', 'Nouvel opus pour la célèbre franchise de FPS, et après plusieurs années de conflits contemporains, Battlefield 1 plonge les joueurs dans la première Guerre Mondiale. Fidèle à ses racines, cet épisode proposera une campagne solo et un mode multijoueur sur des cartes variées et destructibles.'),
-(3, 'Shadow Warrior 2', 'Shadow Warrior 2 met en vedette le guerrier impétueux Lo Wang, qui doit de nouveau exercer une combinaison dévastatrice d\'armes à feu, de lames et de magie pour détruires les légions démoniaques qui écrasent le monde.'),
-(4, 'Mafia III', 'Dans la ville de New Bordeaux en 1968, le joueur incarne Lincoln Clay, un vétéran de la guerre du Vietnam, qui voit sa famille \'adoptive\' se faire massacrer par la mafia Italienne. Dans ce troisième opus de la série Mafia, Lincoln souhaite prendre sa revanche et s\'engage dans une guerre brutale contre les Italiens. Le joueur finira par perturber le pouvoir des mafias dans la ville mais à quel prix? De nombreux choix seront à sa portée pour construire son propre empire du crime afin de prendre le dessus contre les autres criminels et assouvir sa vengeance.'),
-(5, 'Beatbuddy : Tale of the Guardians', 'Beatbuddy : Tale of the Guardians est un jeu d\'aventure musical. Le joueur y incarne Beatbuddy, une entité immortelle partie sauver ses amis du prince Maestro à travers six niveaux peints à la main et aux ambiances musicales réalisées par des musiciens tels qu\'Austin Wintory ou La Rochelle Band.'),
-(6, 'Mario Party : Star Rush', 'Mario Party : Star Rush est un party-game, spin-off de la série des Mario Party, sur 3DS. Vous pourrez jouer avec de nombreux personnages de la license, plus ou moins connus comme Toadette, Harmonie, Wario, Waluigi ... De nombreux amiibos seront également disponible, issus de ce jeu.'),
-(7, 'Gears of War 4', 'Gears of War 4 est un jeu d\'action sur Xbox One. Gears of War 4, qui reprend les acquis de la franchise. L\'histoire se déroulera vingt-cinq ans après les événements du troisième épisode. Suite à l\'utilisation du Rayon de l\'Aube, tous les carburants fossiles de la planète ont été détruits et l\'humanité court un grave danger. Les quatre types de météo auront un impact important sur le déroulement des combats. Pendant la forte bise voleront arbres, feuilles, poussière et de nombreuses autres choses.'),
-(8, 'Final Fantasy XV', 'Anciennement nommé Final Fantasy XIII Versus, Final Fantasy XV est un J-RPG de la célèbre série Final Fantasy. Le joueur y incarne Noctis, héritier du roi, accompagné de ses amis, dans un monde moderne, sombre, et fantastique.'),
-(9, 'The Legend of Zelda : Breath of the Wild', 'Annoncé pour 2015, The Legend of Zelda Wii U est un jeu d\'aventure qui promet d\'être différent de ses prédécesseurs et de se rapprocher de l\'organisation du premier opus de la série. Celui-ci se déroulera dans un monde vaste et ouvert avec des donjons sans ordre imposé.'),
-(10, 'Mass Effect Andromeda', 'Quatrième opus de la saga du même nom, Mass Effect 4 est un jeu de rôle intergalactique reposant sur l\'exploration et la gestion des relations entre les peuples. Le joueur pourra en effet découvrir un vaste ensemble de planètes, et choisir la façon dont il traite les gens qu\'il rencontre et ses coéquipiers.'),
-(11, 'Tekken 7', 'Tekken 7 est le septième épisode de la série de jeux de combat éponyme. Cet épisode comprend d\'anciens personnages de la série, mais également de nouvelles têtes telles que Katarina, Claudio et d\'autres encore...'),
-(12, 'The Last Guardian', 'The Last Guardian est un jeu d\'aventure sur PlayStation 4. Vous incarnez un jeune garçon qui, dans des ruines anciennes, découvre un animal fabuleux. Le titre se concentre sur les relations entre la créature et le garçon, qui évolueront en fonction des actions et attentions de ce dernier pour se transformer en véritable amitié.'),
-(13, 'Kingdom Come : Deliverance', 'Jeu en vue à la première personne, Kingdom Come : Deliverance prend place dans un univers médiéval très réaliste et aux détails soignés. Il propose de nombreux éléments qui sont à la base de tout RPG qui se respecte, à savoir : systèmes de craft et de réputation, combats en PvP, etc.'),
-(14, 'Resident Evil VII', 'Resident Evil VII est un survival-horror en vue à la première personne. Dans un style sombre et glauque qui semble revenir aux racines de la série, ce nouvel épisode a également été pensé pour la réalité virtuelle.');
+INSERT INTO `GAME` (`ID_GAME`, `NAME_GAME`, `RELEASE_DATE`, 'PIC_GAME' `SUMMARY_GAME`) VALUES
+(1, 'Hatsune Miku Project Diva X', '2016-08-30', null, 'Hatsune Miku : Project Diva X disponible sur PS4, est un jeu d\'action/rythme mettant en avant la chanteuse numÃ©rique de renommÃ©e mondiale, Hatsune Miku. Menez le meilleur show jamais connu avec Miku et ses amis. Afin que l\'excitation soit Ã  son comble, il sera possible de dÃ©bloquer des effets de transformation spÃ©ciaux.' ),
+(2, 'Battlefield 1', '2016-10-21', null, 'Nouvel opus pour la cÃ©lÃ¨bre franchise de FPS, et aprÃ¨s plusieurs annÃ©es de conflits contemporains, Battlefield 1 plonge les joueurs dans la premiÃ¨re Guerre Mondiale. FidÃ¨le Ã  ses racines, cet Ã©pisode proposera une campagne solo et un mode multijoueur sur des cartes variÃ©es et destructibles.'),
+(3, 'Shadow Warrior 2', '2016-10-13', null, 'Shadow Warrior 2 met en vedette le guerrier impÃ©tueux Lo Wang, qui doit de nouveau exercer une combinaison dÃ©vastatrice d\'armes Ã  feu, de lames et de magie pour dÃ©truires les lÃ©gions dÃ©moniaques qui Ã©crasent le monde.'),
+(4, 'Mafia III', '2016-10-07', null, 'Dans la ville de New Bordeaux en 1968, le joueur incarne Lincoln Clay, un vÃ©tÃ©ran de la guerre du Vietnam, qui voit sa famille \'adoptive\' se faire massacrer par la mafia Italienne. Dans ce troisiÃ¨me opus de la sÃ©rie Mafia, Lincoln souhaite prendre sa revanche et s\'engage dans une guerre brutale contre les Italiens. Le joueur finira par perturber le pouvoir des mafias dans la ville mais Ã  quel prix? De nombreux choix seront Ã  sa portÃ©e pour construire son propre empire du crime afin de prendre le dessus contre les autres criminels et assouvir sa vengeance.'),
+(5, 'Beatbuddy : Tale of the Guardians', '2013-08-06', null, 'Beatbuddy : Tale of the Guardians est un jeu d\'aventure musical. Le joueur y incarne Beatbuddy, une entitÃ© immortelle partie sauver ses amis du prince Maestro Ã  travers six niveaux peints Ã  la main et aux ambiances musicales rÃ©alisÃ©es par des musiciens tels qu\'Austin Wintory ou La Rochelle Band.'),
+(6, 'Mario Party : Star Rush', '2016-10-07', null, 'Mario Party : Star Rush est un party-game, spin-off de la sÃ©rie des Mario Party, sur 3DS. Vous pourrez jouer avec de nombreux personnages de la license, plus ou moins connus comme Toadette, Harmonie, Wario, Waluigi ... De nombreux amiibos seront Ã©galement disponible, issus de ce jeu.'),
+(7, 'Gears of War 4', '2016-10-11', null, 'Gears of War 4 est un jeu d\'action sur Xbox One. Gears of War 4, qui reprend les acquis de la franchise. L\'histoire se dÃ©roulera vingt-cinq ans aprÃ¨s les Ã©vÃ©nements du troisiÃ¨me Ã©pisode. Suite Ã  l\'utilisation du Rayon de l\'Aube, tous les carburants fossiles de la planÃ¨te ont Ã©tÃ© dÃ©truits et l\'humanitÃ© court un grave danger. Les quatre types de mÃ©tÃ©o auront un impact important sur le dÃ©roulement des combats. Pendant la forte bise voleront arbres, feuilles, poussiÃ¨re et de nombreuses autres choses.'),
+(8, 'Final Fantasy XV', '2016-11-29', null 'Anciennement nommÃ© Final Fantasy XIII Versus, Final Fantasy XV est un J-RPG de la cÃ©lÃ¨bre sÃ©rie Final Fantasy. Le joueur y incarne Noctis, hÃ©ritier du roi, accompagnÃ© de ses amis, dans un monde moderne, sombre, et fantastique.'),
+(9, 'The Legend of Zelda : Breath of the Wild', '2017-03-01', null, 'AnnoncÃ© pour 2015, The Legend of Zelda Wii U est un jeu d\'aventure qui promet d\'Ãªtre diffÃ©rent de ses prÃ©dÃ©cesseurs et de se rapprocher de l\'organisation du premier opus de la sÃ©rie. Celui-ci se dÃ©roulera dans un monde vaste et ouvert avec des donjons sans ordre imposÃ©.'),
+(10, 'Mass Effect Andromeda', '2017-03-21', null, 'QuatriÃ¨me opus de la saga du mÃªme nom, Mass Effect 4 est un jeu de rÃ´le intergalactique reposant sur l\'exploration et la gestion des relations entre les peuples. Le joueur pourra en effet dÃ©couvrir un vaste ensemble de planÃ¨tes, et choisir la faÃ§on dont il traite les gens qu\'il rencontre et ses coÃ©quipiers.'),
+(11, 'Tekken 7', '2017-01-01', null, 'Tekken 7 est le septiÃ¨me Ã©pisode de la sÃ©rie de jeux de combat Ã©ponyme. Cet Ã©pisode comprend d\'anciens personnages de la sÃ©rie, mais Ã©galement de nouvelles tÃªtes telles que Katarina, Claudio et d\'autres encore...'),
+(12, 'The Last Guardian', '2016-12-07', null, 'The Last Guardian est un jeu d\'aventure sur PlayStation 4. Vous incarnez un jeune garÃ§on qui, dans des ruines anciennes, dÃ©couvre un animal fabuleux. Le titre se concentre sur les relations entre la crÃ©ature et le garÃ§on, qui Ã©volueront en fonction des actions et attentions de ce dernier pour se transformer en vÃ©ritable amitiÃ©.'),
+(13, 'Kingdom Come : Deliverance', '2017-01-01', null, 'Jeu en vue Ã  la premiÃ¨re personne, Kingdom Come : Deliverance prend place dans un univers mÃ©diÃ©val trÃ¨s rÃ©aliste et aux dÃ©tails soignÃ©s. Il propose de nombreux Ã©lÃ©ments qui sont Ã  la base de tout RPG qui se respecte, Ã  savoir : systÃ¨mes de craft et de rÃ©putation, combats en PvP, etc.'),
+(14, 'Resident Evil VII', '2017-01-24', null, 'Resident Evil VII est un survival-horror en vue Ã  la premiÃ¨re personne. Dans un style sombre et glauque qui semble revenir aux racines de la sÃ©rie, ce nouvel Ã©pisode a Ã©galement Ã©tÃ© pensÃ© pour la rÃ©alitÃ© virtuelle.');
+
+INSERT INTO `EDITS` (`ID_GAME`, `ID_EDITOR`) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5),
+(6, 6),
+(7, 7),
+(8, 8),
+(9, 6),
+(10, 2),
+(11, 9),
+(12, 10),
+(13, 11),
+(14, 13);
+
+INSERT INTO `DEVELOPS` (`ID_GAME`, `ID_DEV`) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(4, 5),
+(5, 6),
+(6, 7),
+(7, 8),
+(8, 9),
+(9, 7),
+(10, 10),
+(11, 11),
+(12, 12),
+(13, 13),
+(14, 14);
+
+INSERT INTO `OF_THE_GENRE` (`ID_GAME`, `ID_GENRE`) VALUES
+(1, 1),
+(2, 2),
+(3, 2),
+(4, 3),
+(4, 4),
+(4, 7),
+(5, 1),
+(5, 3),
+(5, 4),
+(6, 8),
+(7, 3),
+(7, 3),
+(8, 3),
+(8, 5),
+(9, 3),
+(9, 5),
+(10, 5),
+(11, 9),
+(12, 3),
+(12, 4),
+(13, 5),
+(14, 10);
+
+INSERT INTO `ON_THE_PLATFORM` (`ID_GAME`, `ID_PLATFORM`) VALUES
+(1, 1),
+(1, 5),
+(2, 1),
+(2, 2),
+(2, 3),
+(3, 1),
+(4, 1),
+(4, 2),
+(4, 3),
+(5, 1),
+(5, 4),
+(5, 7),
+(5, 9),
+(6, 2),
+(6, 3),
+(7, 1),
+(7, 3),
+(8, 2),
+(8, 3),
+(9, 4),
+(9, 11),
+(10, 1),
+(10, 2),
+(10, 3),
+(11, 1),
+(11, 2),
+(11, 3),
+(11, 10),
+(12, 2),
+(13, 1),
+(13, 2),
+(13, 3),
+(14, 1),
+(14, 2),
+(14, 3);
 
