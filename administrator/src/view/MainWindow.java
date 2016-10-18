@@ -3,18 +3,14 @@
  */
 package view;
 
-import java.awt.BorderLayout;
+
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
-<<<<<<< HEAD
-import javax.swing.JPanel;
-=======
 import javax.swing.JLabel;
 import javax.swing.JTextField;
->>>>>>> f0b0fa66addbe52cdd3cdbe2f315fa8b7c686fe8
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -48,7 +44,7 @@ public class MainWindow  extends JFrame implements ActionListener
 		
 		super.setTitle("GameCatalog");
 		super.setVisible(true);
-		super.setMinimumSize(new Dimension(1024, 800));
+		super.setMinimumSize(new Dimension(600, 400));
 		super.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 	}
