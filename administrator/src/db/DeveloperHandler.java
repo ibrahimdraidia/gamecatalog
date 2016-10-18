@@ -31,7 +31,7 @@ public class DeveloperHandler extends Database implements CrudInterface{
 				
 				if(_ps.executeUpdate() == 1)
 				{
-					System.out.println("Developer  has been added ;) "); 
+					System.out.println("Developer has been added ;) "); 
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -42,7 +42,29 @@ public class DeveloperHandler extends Database implements CrudInterface{
 	@Override
 	public void update(ArrayList<Integer> id, Map<String, ?> data) {
 		// TODO Auto-generated method stub
-		
+		if(data != null && data.size() != 0)
+		{
+			if(id.size() != 0)
+			{
+				for (int i = 0; i < id.size(); i++) {
+					try {
+						_ps = _connection.prepareStatement
+								("UPDATE DEVELOPER SET NAME_DEV = ? WHERE ID_DEV = ?");
+						
+						_ps.setString(1, data.get("name_dev").toString());
+						_ps.setInt(2, id.get(i));
+						
+						
+						if(_ps.executeUpdate() == 1)
+						{
+							System.out.println("Developer has been updated ;) "); 
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+			}	
+		}
 	}
 
 	@Override

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -25,16 +26,26 @@ public class GameHandler extends Database implements CrudInterface{
 		{
 			try {
 				_ps = _connection.prepareStatement
-						("INSERT INTO GAME(ID_GAME,NAME_GAME,PIC_GAME,SUMMARY_GAME) VALUES(?,?,?,?)");
+						(
+								"INSERT INTO GAME(ID_GAME,NAME_GAME,RELEASE_DATE,PIC_GAME,SUMMARY_GAME) VALUES(?,?,?,?,?)",
+								Statement.RETURN_GENERATED_KEYS
+						);
 				
 				_ps.setInt(1, 0);
 				_ps.setString(2, data.get("name_game").toString());
-				_ps.setString(3, data.get("pic_url").toString());
-				_ps.setString(4, data.get("summary_game").toString());
+				_ps.setString(3, data.get("release_date").toString());
+				_ps.setString(4, data.get("pic_url").toString());
+				_ps.setString(5, data.get("summary_game").toString());
 				
 				if(_ps.executeUpdate() == 1)
 				{
-					System.out.println("Game  has been added ;) "); 
+					System.out.println("Game  has been added ;) ");
+					_rs = _ps.getGeneratedKeys();
+					if(_rs.next())
+					{
+						long id = _rs.getLong(1);
+						System.out.println("The new game ID: " + id);
+					}
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
