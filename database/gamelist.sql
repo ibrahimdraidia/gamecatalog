@@ -3,8 +3,8 @@
 /* Date de création :  17/10/2016 11:16:39                      */
 /*==============================================================*/
 
-CREATE DATABASE IF NOT EXISTS `draidia2_gamecatalog` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `draidia2_gamecatalog`;
+CREATE DATABASE IF NOT EXISTS `gamecatalog` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `gamecatalog`;
 
 
 /*==============================================================*/

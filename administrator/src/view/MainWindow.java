@@ -3,21 +3,15 @@
  */
 package view;
 
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
-
-
-import javax.swing.JPanel;
-
-import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JTextField;
+import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -25,45 +19,44 @@ import javax.swing.UnsupportedLookAndFeelException;
  *
  * @author GamyCats
  */
-public class MainWindow  extends JFrame
+public class MainWindow extends JFrame
 {
+
 	// Exteriour border
 	private final int BORDER = 10;
-
 	//Panels
 	private JPanel mainPanel;
 	private LogoPanel logoPanel;
 	private TabPanel tabPanel;
 	private TablePanel tablePanel;
-
 	//MenuBar
-	private JMenuBar  menuBar;
-		    JMenu     menu1,
-		    		  menu2,
-		    		  menu3;
+	private JMenuBar menuBar;
+	JMenu menu1,
+			menu2,
+			menu3;
 	private JMenuItem connect,
-		              disconnect;
+			disconnect;
 
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *	Constructor
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- */
+	 */
 	public MainWindow()
 	{
 		testLookAndFeel();
 		super.setTitle("GameCatalog");
 		super.setVisible(true);
-		super.setMinimumSize(new Dimension(600, 400));
+		super.setMinimumSize(new Dimension(1368, 768));
 		super.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		
-		
-		
+
+		initMenuBar();
+		initObjects();
 	}
 
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *	Objects
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- */
+	 */
 	private void initObjects()
 	{
 		/*
@@ -82,10 +75,10 @@ public class MainWindow  extends JFrame
 		mainPanel.add(new TablePanel(), BorderLayout.CENTER);
 	}
 
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *	Menubar
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- */
+	 */
 	private void initMenuBar()
 	{
 		/*
@@ -110,21 +103,19 @@ public class MainWindow  extends JFrame
 
 		// MenuBar background color.
 		//menuBar.setBackground(Color.decode("#252525"));
-
 		this.setJMenuBar(menuBar);
 	}
 
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *	Misc
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- */
+	 */
 	private void testLookAndFeel()
 	{
 		try
 		{
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		}
-		catch(ClassNotFoundException | InstantiationException |
+		} catch (ClassNotFoundException | InstantiationException |
 				IllegalAccessException | UnsupportedLookAndFeelException e)
 		{
 			System.err.println(e);
