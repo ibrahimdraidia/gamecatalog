@@ -1,18 +1,12 @@
-/*
- * It is wot the games run on init ...
- */
+
 package entity;
 
-import java.util.ArrayList;
 
-/**
- *
- * @author GamyCats
- */
+
 public class Platform extends Type
 {
 	private int _id_platform;
-	private ArrayList<String> _platform;
+	private String _name_platform;
 
 	public Platform()
 	{
@@ -28,14 +22,14 @@ public class Platform extends Type
 		this._id_platform = _id_platform;
 	}
 
-	public ArrayList getPlatform()
-	{
-		return _platform;
+	public String getName_platform() {
+		return _name_platform;
 	}
 
-	public void setPlatform(ArrayList _platform)
-	{
-		this._platform = _platform;
+	public void setName_platform(String _name_platform) {
+		this._name_platform = _name_platform;
 	}
+
+	
 
 }

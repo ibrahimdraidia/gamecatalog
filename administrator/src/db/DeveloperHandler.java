@@ -4,15 +4,18 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Map;
 
+import entity.Developer;
 import interfaces.CrudInterface;
 
 public class DeveloperHandler extends Database implements CrudInterface{
 
 	private Connection _connection;
 	private PreparedStatement _ps;
+	private Statement _s;
 	private ResultSet _rs;
 	
 	/*
@@ -76,14 +79,57 @@ public class DeveloperHandler extends Database implements CrudInterface{
 
 	@Override
 	public void remove(ArrayList<Integer> id) {
-		// TODO Auto-generated method stub
-		
-	}
+		  if(id != null && id.size() != 0)
+		  {
+              for (int i = 0; i < id.size(); i++){
+                      try {
+                              _ps = _connection.prepareStatement
+                                              ("DELETE FROM DEVELOPER WHERE ID_DEV = ?");
 
+                              _ps.setInt(1, id.get(i));
+
+                              if(_ps.executeUpdate() == 1)
+                              {
+                                      System.out.println("Developer with " + String.valueOf(id.get(i)) + " has been deleted ;) "); 
+                              }
+                      } catch (SQLException e) {
+                              e.printStackTrace();
+                      }
+              }
+      }
+	}
 	@Override
-	public void getAll() {
-		// TODO Auto-generated method stub
-		
+	public ArrayList<?> getAll() {
+		// temp arrayList
+				ArrayList<Object> tempList = new ArrayList<>();
+				
+				try {
+					_s = _connection.createStatement();
+
+					if(_s.execute("SELECT * FROM DEVELOPER"))
+					{
+						// temp platform obj
+						Developer temp;
+						
+						// get result
+						_rs = _s.getResultSet();
+						
+						while(_rs.next())
+						{
+							temp = new Developer();
+							temp.setId_developer(_rs.getInt("ID_DEV"));
+							temp.setDeveloper_name(_rs.getString("NAME_DEV"));
+							
+							tempList.add(temp);
+						}
+						
+					}
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				return tempList;
 	}
 
+	
 }

@@ -1,5 +1,6 @@
 package db;
 
+import entity.Game;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,12 +19,14 @@ public class GameHandler extends Database implements CrudInterface{
 	private Connection _connection;
 	private PreparedStatement _ps;
 	private ResultSet _rs;
+        private Game _game;
 	
 	/*
 	 * Principle database connection.
 	 */
 	public GameHandler() {
 		_connection = getInstance();
+                _game = new Game();
 	}
 
 	/*
@@ -52,8 +55,38 @@ public class GameHandler extends Database implements CrudInterface{
 					_rs = _ps.getGeneratedKeys();
 					if(_rs.next())
 					{
-						long id = _rs.getLong(1);
-						System.out.println("The new game ID: " + id);
+						_game.setId_game((int)_rs.getLong(1));
+                                                
+                        _ps = _connection.prepareStatement("INSERT INTO DEVELOPS (ID_GAME, ID_DEV) VALUES (?,?)");
+                        _ps.setInt(1, Integer.parseInt(String.valueOf(_game.getId_game())));
+                        _ps.setInt(2, Integer.parseInt(data.get("id_dev").toString()));
+                        if(_ps.executeUpdate() == 1){
+                            System.out.println("Game has been added to Develops");                                                 
+                        }
+                        
+                        _ps = _connection.prepareStatement("INSERT INTO EDITS (ID_GAME, ID_EDITOR) VALUES (?,?)");
+                        _ps.setInt(1, Integer.parseInt(String.valueOf(_game.getId_game())));
+                        _ps.setInt(2, Integer.parseInt(data.get("id_editor").toString()));
+                         if(_ps.executeUpdate() == 1){
+                            System.out.println("Game has been added to Edits");                                                 
+                        }
+                         
+                        _ps = _connection.prepareStatement("INSERT INTO OF_THE_GENRE (ID_GAME, ID_GENRE) VALUES (?,?)");
+                        _ps.setInt(1, Integer.parseInt(String.valueOf(_game.getId_game())));
+                        _ps.setInt(2, Integer.parseInt(data.get("id_genre").toString()));
+                         if(_ps.executeUpdate() == 1){
+                            System.out.println("Game has been added to of_the_genre");                                                 
+                        }
+                         
+                        _ps = _connection.prepareStatement("INSERT INTO ON_THE_PLATFORM (ID_GAME, ID_PLATFORM) VALUES (?,?)");
+                        _ps.setInt(1, Integer.parseInt(String.valueOf(_game.getId_game())));
+                        _ps.setInt(2, Integer.parseInt(data.get("id_platform").toString()));
+                         if(_ps.executeUpdate() == 1){
+                            System.out.println("Game has been added to on_the_platform");                                                 
+                        }
+                        
+                        System.out.println("New game has been added");
+                                               
 					}
 				}
 			} catch (SQLException e) {
@@ -75,10 +108,12 @@ public class GameHandler extends Database implements CrudInterface{
 	}
 
 	@Override
-	public void getAll() {
+	public ArrayList<?> getAll() {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
+
+
 
 	
 

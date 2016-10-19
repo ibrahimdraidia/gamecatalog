@@ -9,6 +9,6 @@ public interface CrudInterface {
 	public void add(Map<String, ?> data);
 	public void update(ArrayList<Integer> id, Map<String, ?> data);
 	public void remove(ArrayList<Integer> id);
-	public void getAll();
+	public ArrayList<?> getAll();
 
 }
