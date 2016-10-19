@@ -18,9 +18,16 @@ public class DeveloperHandler extends Database implements CrudInterface{
 	private Statement _s;
 	private ResultSet _rs;
 	
+	/*
+	 * Connect db
+	 */
 	public DeveloperHandler() {
 		_connection = getInstance();
 	}
+	
+	/*
+	 * Add Developer
+	 */
 	@Override
 	public void add(Map<String, ?> data) {
 		if(data != null && data.size() != 0)

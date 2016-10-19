@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author iain
+ * @author GamyCats
  */
 public class Type 
 {

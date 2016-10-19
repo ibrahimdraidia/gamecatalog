@@ -18,9 +18,16 @@ public class PlatformHandler extends Database implements CrudInterface{
 	private Statement _s;
 	private ResultSet _rs;
 	
+	/*
+	 * Connect db.
+	 */
 	public PlatformHandler() {
 		_connection = getInstance();
 	}
+
+	/*
+     * Add platform.
+     */
 	@Override
 	public void add(Map<String, ?> data) {
 		if(data != null && data.size() != 0)
