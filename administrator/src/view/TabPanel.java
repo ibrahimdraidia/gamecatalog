@@ -1,10 +1,11 @@
 /*
- * 
+ * Opens FormPanelGame, FormPanelEditor, FormPanelDev and FormPanelPlatform
  */
 package view;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.GridLayout;
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
@@ -14,29 +15,30 @@ import javax.swing.JTabbedPane;
  */
 public class TabPanel extends JPanel
 {
-	JPanel mainPanel;
-	JPanel gridPanel;
+	JTabbedPane tabPanelGame;
+	JTabbedPane tabPanelEditor;
+	JTabbedPane tabPanelDev;
 	JTabbedPane tabPanel;
-	FormPanel formPanel;
 
 	public TabPanel()
 	{
-		initObjects();
-		initPanel();
+		initGamePanel();
 	}
 
-	private void initObjects()
+	private void initGamePanel()
 	{
-		this.getParent();
-		this.setBackground(Color.decode("#101010"));
-		this.setLayout(new GridLayout(1, 1));
-		tabPanel = new JTabbedPane();
-		this.add(tabPanel);
-		formPanel = new FormPanel();
-		tabPanel.addTab("Data", formPanel);
-	}
+		this.setLayout(new BorderLayout());
+		this.setBorder(BorderFactory.createEmptyBorder(5,10,5,10));
+		this.setBackground(Color.decode("#303030"));
 
-	private void initPanel()
-	{
+		// Tab panels
+		tabPanelGame = new JTabbedPane();
+		//New pages
+		tabPanelGame.addTab("Game", new FormPanelGame());
+		tabPanelGame.addTab("Editor", new FormPanelEditor());
+		tabPanelGame.addTab("Dev", new FormPanelDev());
+		tabPanelGame.addTab("Platform", new FormPanelPlatform());
+		
+		this.add(tabPanelGame);
 	}
 }

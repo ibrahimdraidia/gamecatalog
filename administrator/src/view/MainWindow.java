@@ -6,7 +6,6 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -22,11 +21,15 @@ import javax.swing.UnsupportedLookAndFeelException;
  */
 public class MainWindow  extends JFrame
 {
+	// Exteriour border
 	private final int BORDER = 10;
+
 	//Panels
 	private JPanel mainPanel;
 	private LogoPanel logoPanel;
 	private TabPanel tabPanel;
+	private TablePanel tablePanel;
+
 	//MenuBar
 	private JMenuBar  menuBar;
 		    JMenu     menu1,
@@ -62,27 +65,21 @@ public class MainWindow  extends JFrame
 		 */
 		mainPanel = (JPanel) this.getContentPane();
 		mainPanel.setBackground(Color.decode("#222222"));
-		mainPanel.setLayout(new BorderLayout());
 		mainPanel.setBorder(
 				BorderFactory.createEmptyBorder(BORDER, BORDER, BORDER, BORDER));
+		mainPanel.setLayout(new BorderLayout());
 
-		// Set border panels.
-		// Logo panel.
-		logoPanel = new LogoPanel();
-		logoPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-		//Tab panel.
-		tabPanel = new TabPanel();
-		tabPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-		// Add panels.
-		mainPanel.add(logoPanel, BorderLayout.NORTH);
-		mainPanel.add(tabPanel, BorderLayout.WEST);
+		/*
+		 * Set border panels.
+		 */
+		mainPanel.add(new LogoPanel(), BorderLayout.NORTH);
+		mainPanel.add(new TablePanel(), BorderLayout.CENTER);
 	}
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *	Menubar
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
-
 	private void initMenuBar()
 	{
 		/*

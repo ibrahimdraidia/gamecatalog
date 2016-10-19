@@ -29,47 +29,35 @@ public class Icons
  *  LED Lights
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
-	public Icon iconBlueLedOn30()
+	public Icon iconGreenLedOn50()
 	{
-		Icon dbIcon = createImageIcon(path+"blue_led-on-30.png");
+		Icon dbIcon = createImageIcon(path+"green_led-on-50.png");
 		return dbIcon;
 	}
 
-	public Icon iconBlueLedOff30()
+	public Icon iconGreenLedOff50()
 	{
-		Icon dbIcon = createImageIcon(path+"blue_led-off-30.png");
+		Icon dbIcon = createImageIcon(path+"green_led-off-50.png");
 		return dbIcon;
 	}
 
-	public Icon iconGreenLedOn30()
+	public Icon iconRedLedOn50()
 	{
-		Icon dbIcon = createImageIcon(path+"green_led-on-30.png");
+		Icon dbIcon = createImageIcon(path+"red_led-on-50.png");
 		return dbIcon;
 	}
 
-	public Icon iconGreenLedOff30()
+	public Icon iconRedLedOff50()
 	{
-		Icon dbIcon = createImageIcon(path+"green_led-off-30.png");
-		return dbIcon;
-	}
-
-	public Icon iconRedLedOn30()
-	{
-		Icon dbIcon = createImageIcon(path+"red_led-on-30.png");
-		return dbIcon;
-	}
-
-	public Icon iconRedLedOff30()
-	{
-		Icon dbIcon = createImageIcon(path+"red_led-off-30.png");
+		Icon dbIcon = createImageIcon(path+"red_led-off-50.png");
 		return dbIcon;
 	}
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
-	public JLabel labelGreenLedOn30()
+	public JLabel labelGreenLedOn50()
 	{
-		ImageIcon dbicon = createImageIcon(path+"green_led-on-30.png");
+		ImageIcon dbicon = createImageIcon(path+"green_led-on-50.png");
 		JLabel dbIcon = new JLabel(dbicon);		
 		return dbIcon;
 	}
