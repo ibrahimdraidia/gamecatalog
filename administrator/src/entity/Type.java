@@ -9,7 +9,7 @@ import java.util.ArrayList;
  *
  * @author iain
  */
-public class Type extends Date
+public class Type 
 {
 	private int _id_type;
 	private ArrayList<String> _type;
