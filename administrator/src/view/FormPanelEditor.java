@@ -3,12 +3,15 @@
  */
 package view;
 
+import db.EditorHandler;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -29,12 +32,6 @@ public class FormPanelEditor extends JPanel implements ActionListener
 	//Editor
 	private JLabel     lb_name_editor;
 	private JTextField tf_name_editor;
-	//URL image
-	private JLabel     lb_url_image;
-	private JTextField tf_url_image;
-	//Description
-	private JLabel     lb_description;
-	private JTextField tf_description;
 	//Buttons
 	private JButton filter;
 	private JButton create;
@@ -70,18 +67,12 @@ public class FormPanelEditor extends JPanel implements ActionListener
 
 		//Instantiane lables
 		lb_name_editor = new JLabel("Editor : ", JLabel.CENTER);
-		lb_url_image = new JLabel("Image url : ", JLabel.CENTER);
-		lb_description = new JLabel("Description : ", JLabel.CENTER);
 
 		//Set label text colour.
 		lb_name_editor.setForeground(Color.decode(TEXT_COLOUR));
-		lb_url_image.setForeground(Color.decode(TEXT_COLOUR));
-		lb_description.setForeground(Color.decode(TEXT_COLOUR));
 
 		//Instantiate Text fields and combo boxes
 		tf_name_editor = new JTextField();
-		tf_url_image = new JTextField();
-		tf_description = new JTextField();
 
 		//Buttons
 		filter = new JButton("Filter");
@@ -96,12 +87,6 @@ public class FormPanelEditor extends JPanel implements ActionListener
 		// Add lables text fields and comboboxes
 		panelTextField.add(lb_name_editor);
 		panelTextField.add(tf_name_editor);
-		/**/
-		panelTextField.add(lb_url_image);
-		panelTextField.add(tf_url_image);
-		/**/
-		panelTextField.add(lb_description);
-		panelTextField.add(tf_description);
 
 		// Add buttons
 		panelButton.add(filter);
@@ -129,19 +114,25 @@ public class FormPanelEditor extends JPanel implements ActionListener
 	{
 		if(e.getSource() == filter)
 		{
-			System.out.println("Groovy choosy.");
 		}
 		else if (e.getSource() == create)
 		{
-			System.out.println("Groovy choosy.");
+			//Put values from text fields and parse into hash table.
+			Map<String, Object> createEditorMap = new HashMap<String, Object>();
+			createEditorMap.put("name_editor", tf_name_editor.getText().toString());
+			//Parse hashtable into handeler class.
+			new EditorHandler().add(createEditorMap);
 		}
 		else if (e.getSource() == update)
 		{
-			System.out.println("Groovy choosy.");
+			//Put values from text fields and parse into hash table.
+			Map<String, Object> createEditorMap = new HashMap<String, Object>();
+//			createEditorMap.update("name_editor", tf_name_editor.getText().toString());
+			//Parse hashtable into handeler class.
+			new EditorHandler().add(createEditorMap);
 		}
 		else if (e.getSource() == delete)
 		{
-			System.out.println("Groovy choosy.");
 		}
 	}
 }

@@ -3,12 +3,15 @@
  */
 package view;
 
+import db.PlatformHandler;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -112,19 +115,27 @@ public class FormPanelPlatform extends JPanel implements ActionListener
 	{
 		if(e.getSource() == filter)
 		{
-			System.out.println("Groovy choosy.");
+
 		}
 		else if (e.getSource() == create)
 		{
-			System.out.println("Groovy choosy.");
+			//Put values from text fields and parse into hash table.
+			Map<String, Object> createPlatformMap = new HashMap<String, Object>();
+			createPlatformMap.put("name_platform", tf_platform.getText().toString());
+			//Parse 
+			new PlatformHandler().add(createPlatformMap);
 		}
 		else if (e.getSource() == update)
 		{
-			System.out.println("Groovy choosy.");
+			//Put values from text fields and parse into hash table.
+			Map<String, Object> createPlatformMap = new HashMap<String, Object>();
+//			createPlatformMap.update("name_platform", tf_platform.getText().toString());
+			//Parse 
+			new PlatformHandler().add(createPlatformMap);
 		}
 		else if (e.getSource() == delete)
 		{
-			System.out.println("Groovy choosy.");
+
 		}
 	}
 }

@@ -19,6 +19,9 @@ public class Main {
 		EditorHandler editor = new EditorHandler ();
 		PlatformHandler platform = new PlatformHandler ();
 		
+		/*
+		 * Tempory data
+		 */
 		Map<String,Object> map = new HashMap<String, Object>();
 		Map<String,Object> dev = new HashMap<String, Object>();
 		Map<String,Object> edit = new HashMap<String, Object>();

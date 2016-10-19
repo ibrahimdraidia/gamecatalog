@@ -3,12 +3,15 @@
  */
 package view;
 
+import db.GameHandler;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -16,7 +19,9 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
+import javax.swing.JComponent;
 
 /**
  *
@@ -90,7 +95,6 @@ public class FormPanelGame extends JPanel implements ActionListener
 		boxPanelRight.setLayout(new BoxLayout(boxPanelRight, BoxLayout.Y_AXIS));
 		gridPanelButton = new JPanel(new GridLayout(1, 4, 9, 8));
 		gridPanelButton.setBorder(BorderFactory.createEmptyBorder(50, 5, 5, 5));
-
 
 		//Instantiane lables, annotate.
 		lb_name_game = new JLabel("Game : ", JLabel.CENTER);
@@ -195,19 +199,32 @@ public class FormPanelGame extends JPanel implements ActionListener
 	{
 		if(e.getSource() == filter)
 		{
-			System.out.println("Groovy choosy.");
+			
 		}
 		else if (e.getSource() == create)
 		{
-			System.out.println("Groovy choosy.");
+			//Put values from text fields and parse into hash table.
+			Map<String, Object> createGameMap = new HashMap<String, Object>();
+			createGameMap.put("name_game", tf_name_game.getText().toString());
+			createGameMap.put("release_date", "1990-11-21");
+			createGameMap.put("pic_game", tf_url_image.getText().toString());
+			createGameMap.put("summary_game", tf_description.getText().toString());
+			//Parse 
+			new GameHandler().add(createGameMap);
 		}
 		else if (e.getSource() == update)
 		{
-			System.out.println("Groovy choosy.");
+			//Put values from text fields and parse into hash table.
+			Map<String, Object> createGameMap = new HashMap<String, Object>();
+//			createGameMap.update("name_game", tf_name_game.getText().toString());
+//			createGameMap.update("release_date", "1990-11-21");
+//			createGameMap.update("pic_game", tf_url_image.getText().toString());
+//			createGameMap.update("summary_game", tf_description.getText().toString());
+			//Parse 
+			new GameHandler().add(createGameMap);
 		}
 		else if (e.getSource() == delete)
 		{
-			System.out.println("Groovy choosy.");
 		}
 	}
 }

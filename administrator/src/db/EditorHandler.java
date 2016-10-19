@@ -9,15 +9,25 @@ import java.util.Map;
 
 import interfaces.CrudInterface;
 
+/*
+ * Add editor.
+ */
 public class EditorHandler extends Database implements CrudInterface{
 
 	private Connection _connection;
 	private PreparedStatement _ps;
 	private ResultSet _rs;
 	
+	/*
+	 * Connect database.
+	 */
 	public EditorHandler() {
 		_connection = getInstance();
 	}
+
+	/*
+	 * Add Editor.
+	 */
 	@Override
 	public void add(Map<String, ?> data) {
 		if(data != null && data.size() != 0)

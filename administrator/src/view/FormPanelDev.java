@@ -3,12 +3,15 @@
  */
 package view;
 
+import db.DeveloperHandler;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -112,19 +115,27 @@ public class FormPanelDev extends JPanel implements ActionListener
 	{
 		if(e.getSource() == filter)
 		{
-			System.out.println("Groovy choosy.");
+
 		}
 		else if (e.getSource() == create)
 		{
-			System.out.println("Groovy choosy.");
+			//Put values from text fields and parse into hash table.
+			Map<String, Object> createDeveloperMap = new HashMap<String, Object>();
+			createDeveloperMap.put("name_dev", tf_listDev.getText().toString());
+			//Parse
+			new DeveloperHandler().add(createDeveloperMap);
 		}
 		else if (e.getSource() == update)
 		{
-			System.out.println("Groovy choosy.");
+			//Put values from text fields and parse into hash table.
+			Map<String, Object> createDeveloperMap = new HashMap<String, Object>();
+//			createDeveloperMap.update("name_dev", tf_listDev.getText().toString());
+			//Parse
+			new DeveloperHandler().add(createDeveloperMap);
 		}
 		else if (e.getSource() == delete)
 		{
-			System.out.println("Groovy choosy.");
+
 		}
 	}
 }
