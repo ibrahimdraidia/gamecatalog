@@ -2,13 +2,7 @@
 package entity;
 
 
-<<<<<<< HEAD
-=======
-/**
- *
- * @author GamyCats
- */
->>>>>>> c5f0f5f53a07bff7c38a3bbecff69545b59f1847
+
 public class Platform extends Type
 {
 	private int _id_platform;

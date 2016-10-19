@@ -28,14 +28,7 @@ public class EditorHandler extends Database implements CrudInterface{
 	public EditorHandler() {
 		_connection = getInstance();
 	}
-<<<<<<< HEAD
-	
-=======
 
-	/*
-	 * Add Editor.
-	 */
->>>>>>> c5f0f5f53a07bff7c38a3bbecff69545b59f1847
 	@Override
 	public void add(Map<String, ?> data) {
 		if(data != null && data.size() != 0)
