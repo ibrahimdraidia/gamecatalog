@@ -129,7 +129,7 @@ public class FormPanelPlatform extends JPanel implements ActionListener
 		{
 			//Put values from text fields and parse into hash table.
 			Map<String, Object> createPlatformMap = new HashMap<String, Object>();
-//			createPlatformMap.update("name_platform", tf_platform.getText().toString());
+			createPlatformMap.put("name_platform", tf_platform.getText().toString());
 			//Parse 
 			new PlatformHandler().add(createPlatformMap);
 		}

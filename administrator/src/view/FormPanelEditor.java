@@ -127,7 +127,7 @@ public class FormPanelEditor extends JPanel implements ActionListener
 		{
 			//Put values from text fields and parse into hash table.
 			Map<String, Object> createEditorMap = new HashMap<String, Object>();
-//			createEditorMap.update("name_editor", tf_name_editor.getText().toString());
+			createEditorMap.put("name_editor", tf_name_editor.getText().toString());
 			//Parse hashtable into handeler class.
 			new EditorHandler().add(createEditorMap);
 		}

@@ -129,7 +129,7 @@ public class FormPanelDev extends JPanel implements ActionListener
 		{
 			//Put values from text fields and parse into hash table.
 			Map<String, Object> createDeveloperMap = new HashMap<String, Object>();
-//			createDeveloperMap.update("name_dev", tf_listDev.getText().toString());
+			createDeveloperMap.put("name_dev", tf_listDev.getText().toString());
 			//Parse
 			new DeveloperHandler().add(createDeveloperMap);
 		}

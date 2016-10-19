@@ -29,7 +29,16 @@ public class FormPanelGame extends JPanel implements ActionListener
 {
 	private final String TEXT_COLOUR = "#AAAAAA";
 	private final String TEXT_FIELD = "#505050";
+	private final String BUTTON_COLOUR = "#509950";
 	private JPanel containerPanel;
+	private JPanel line1;
+	private JPanel line2;
+	private JPanel line3;
+	private JPanel line4;
+	private JPanel line5;
+	private JPanel line6;
+	private JPanel line7;
+	private JPanel line8;
 	private JPanel boxPanelLeft;
 	private JPanel boxPanelRight;
 	private JPanel gridPanelButton;
@@ -141,9 +150,10 @@ public class FormPanelGame extends JPanel implements ActionListener
 		create = new JButton("new");
 		update = new JButton("update");
 		delete = new JButton("delete");
+		//Button colour
+		filter.setBackground(Color.red);
 
 		// Add the grid to the main panel.
-		//this.add(borderPanelVertical);
 		containerPanel.add(boxPanelLeft);
 		containerPanel.add(boxPanelRight);
 		this.add(containerPanel, BorderLayout.CENTER);
@@ -210,7 +220,7 @@ public class FormPanelGame extends JPanel implements ActionListener
 				}
 				else
 				{
-					add();
+					createGame();
 				}
 			}
 			else if(tf_url_image.getText().trim().length() != 0)
@@ -222,7 +232,7 @@ public class FormPanelGame extends JPanel implements ActionListener
 				}
 				else
 				{
-					add();
+					createGame();
 				}
 			}
 			else if (tf_description.getText().trim().length() != 0)
@@ -234,22 +244,22 @@ public class FormPanelGame extends JPanel implements ActionListener
 				}
 				else
 				{
-					add();
+					createGame();
 				}
 			}
 			else
 			{
-				add();
+				createGame();
 			}
 		}
 		else if (e.getSource() == update)
 		{
 			//Put values from text fields and parse into hash table.
 			Map<String, Object> createGameMap = new HashMap<String, Object>();
-//			createGameMap.update("name_game", tf_name_game.getText().toString());
-//			createGameMap.update("release_date", "1990-11-21");
-//			createGameMap.update("pic_game", tf_url_image.getText().toString());
-//			createGameMap.update("summary_game", tf_description.getText().toString());
+			createGameMap.put("name_game", tf_name_game.getText().toString());
+			createGameMap.put("release_date", "1990-11-21");
+			createGameMap.put("pic_game", tf_url_image.getText().toString());
+			createGameMap.put("summary_game", tf_description.getText().toString());
 			//Parse 
 			new GameHandler().add(createGameMap);
 		}
@@ -258,7 +268,7 @@ public class FormPanelGame extends JPanel implements ActionListener
 		}
 	}
 
-	private void add()
+	private void createGame()
 	{
 		//Put values from text fields and parse into hash table.
 		Map<String, Object> createGameMap = new HashMap<String, Object>();
