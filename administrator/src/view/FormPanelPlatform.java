@@ -1,5 +1,5 @@
 /*
- *
+ * Platform TabPane
  */
 package view;
 

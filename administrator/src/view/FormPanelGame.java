@@ -19,9 +19,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
-import javax.swing.JComponent;
 
 /**
  *
@@ -203,14 +201,46 @@ public class FormPanelGame extends JPanel implements ActionListener
 		}
 		else if (e.getSource() == create)
 		{
-			//Put values from text fields and parse into hash table.
-			Map<String, Object> createGameMap = new HashMap<String, Object>();
-			createGameMap.put("name_game", tf_name_game.getText().toString());
-			createGameMap.put("release_date", "1990-11-21");
-			createGameMap.put("pic_game", tf_url_image.getText().toString());
-			createGameMap.put("summary_game", tf_description.getText().toString());
-			//Parse 
-			new GameHandler().add(createGameMap);
+			if (tf_date.getText().trim().length() != 0)
+			{
+				VerifyRegex check = new VerifyRegex(1, tf_date.getText().toString());
+				if (!check.validate())
+				{
+					System.out.println("Incorect date format");
+				}
+				else
+				{
+					add();
+				}
+			}
+			else if(tf_url_image.getText().trim().length() != 0)
+			{
+				VerifyRegex check = new VerifyRegex(2, tf_url_image.getText().toString());
+				if (!check.validate())
+				{
+					System.out.println("Incorect format for URL");
+				}
+				else
+				{
+					add();
+				}
+			}
+			else if (tf_description.getText().trim().length() != 0)
+			{
+				VerifyRegex check = new VerifyRegex(3, tf_description.getText().toString());
+				if (!check.validate())
+				{
+					System.out.println("Description is limited to 1000 characters");
+				}
+				else
+				{
+					add();
+				}
+			}
+			else
+			{
+				add();
+			}
 		}
 		else if (e.getSource() == update)
 		{
@@ -226,5 +256,17 @@ public class FormPanelGame extends JPanel implements ActionListener
 		else if (e.getSource() == delete)
 		{
 		}
+	}
+
+	private void add()
+	{
+		//Put values from text fields and parse into hash table.
+		Map<String, Object> createGameMap = new HashMap<String, Object>();
+		createGameMap.put("name_game", tf_name_game.getText().toString());
+		createGameMap.put("release_date", "1990-11-21");
+		createGameMap.put("pic_game", tf_url_image.getText().toString());
+		createGameMap.put("summary_game", tf_description.getText().toString());
+		//Parse 
+		new GameHandler().add(createGameMap);
 	}
 }
