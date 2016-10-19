@@ -5,7 +5,7 @@ package entity;
 
 /**
  *
- * @author iain
+ * @author GamyCats
  */
 public class Date
 {

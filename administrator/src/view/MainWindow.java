@@ -5,9 +5,7 @@ package view;
 
 
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JComboBox;
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 
 
@@ -20,32 +18,34 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
- * @author iain
+ * @author GamyCats
  */
-public class MainWindow  extends JFrame implements ActionListener
+public class MainWindow  extends JFrame
 {
-	//Game
-	private JLabel     lb_name_game;
-	private JTextField tf_name_game;
-	//Editor
-	private JLabel     lb_name_editor;
-	private JTextField tf_name_editor;
-	//Developer
-	private JLabel     lb_listDev;
-	private JComboBox  cb_listDev;
-	//Platform
-	private JLabel     lb_platform;
-	private JComboBox  cb_platform;
-	//Type
-	private JLabel     lb_type;
-	private JComboBox  cb_type;
+	// Exteriour border
+	private final int BORDER = 10;
 
+	//Panels
+	private JPanel mainPanel;
+	private LogoPanel logoPanel;
+	private TabPanel tabPanel;
+	private TablePanel tablePanel;
 
+	//MenuBar
+	private JMenuBar  menuBar;
+		    JMenu     menu1,
+		    		  menu2,
+		    		  menu3;
+	private JMenuItem connect,
+		              disconnect;
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *	Constructor
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ */
 	public MainWindow()
 	{
-		
 		testLookAndFeel();
-		
 		super.setTitle("GameCatalog");
 		super.setVisible(true);
 		super.setMinimumSize(new Dimension(600, 400));
@@ -59,20 +59,54 @@ public class MainWindow  extends JFrame implements ActionListener
  *	Objects
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
-
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- *	Pannels
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- */
-
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- *	Controlers
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- */
-	@Override
-	public void actionPerformed(ActionEvent e)
+	private void initObjects()
 	{
-		
+		/*
+		 * The main window, principal BorderLayout and spacing.
+		 */
+		mainPanel = (JPanel) this.getContentPane();
+		mainPanel.setBackground(Color.decode("#222222"));
+		mainPanel.setBorder(
+				BorderFactory.createEmptyBorder(BORDER, BORDER, BORDER, BORDER));
+		mainPanel.setLayout(new BorderLayout());
+
+		/*
+		 * Set border panels.
+		 */
+		mainPanel.add(new LogoPanel(), BorderLayout.NORTH);
+		mainPanel.add(new TablePanel(), BorderLayout.CENTER);
+	}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *	Menubar
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ */
+	private void initMenuBar()
+	{
+		/*
+		 * The menu bar.
+		 */
+		menuBar = new JMenuBar();
+		/**/
+		menu1 = new JMenu("page");
+		menu2 = new JMenu("db");
+		menu3 = new JMenu("info");
+		/**/
+		menuBar.add(menu1);
+		menuBar.add(menu2);
+		menuBar.add(menu3);
+
+		// Items within the menubar ...
+		connect = new JMenuItem("Connect");
+		disconnect = new JMenuItem("Disconnect");
+		/**/
+		menu2.add(connect);
+		menu2.add(disconnect);
+
+		// MenuBar background color.
+		//menuBar.setBackground(Color.decode("#252525"));
+
+		this.setJMenuBar(menuBar);
 	}
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
