@@ -53,6 +53,14 @@ public class VerifyRegex
  *  Tests
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
+	/**
+	 * Variable 'id' parsed when the class is created ...
+	 * validate date with regular expression using id '1'
+	 * validate url is correctly entered with id '2' 
+	 * validate text does not exceed 1000 char with id '3'
+	 * 
+	 * @return boolean
+	 */
 	public boolean validate()
 	{
 		switch (_id)

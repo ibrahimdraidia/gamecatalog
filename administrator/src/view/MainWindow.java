@@ -44,12 +44,13 @@ public class MainWindow extends JFrame
 	{
 		testLookAndFeel();
 		super.setTitle("GameCatalog");
-		super.setVisible(true);
 		super.setMinimumSize(new Dimension(1400, 800));
 		super.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		initMenuBar();
 		initObjects();
+
+		super.setVisible(true);
 	}
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

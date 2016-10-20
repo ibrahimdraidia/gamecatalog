@@ -270,6 +270,11 @@ public class FormPanelGame extends JPanel implements ActionListener
 		create.addActionListener(this);
 		update.addActionListener(this);
 		delete.addActionListener(this);
+		/**/
+		cb_name_editor.addActionListener(this);
+		cb_listDev.addActionListener(this);
+		cb_platform.addActionListener(this);
+		cb_type.addActionListener(this);
 	}
 
 	/*
@@ -278,6 +283,7 @@ public class FormPanelGame extends JPanel implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
+		//Buttons
 		if(e.getSource() == filter)
 		{
 			
@@ -286,6 +292,7 @@ public class FormPanelGame extends JPanel implements ActionListener
 		{
 			if (tf_date.getText().trim().length() != 0)
 			{
+				// Check date before write ...
 				VerifyRegex check = new VerifyRegex(1, tf_date.getText().toString());
 				if (!check.validate())
 				{
@@ -303,6 +310,7 @@ public class FormPanelGame extends JPanel implements ActionListener
 			}
 			else if(tf_url_image.getText().trim().length() != 0)
 			{
+				// Check format of url before write ...
 				VerifyRegex check = new VerifyRegex(2, tf_url_image.getText().toString());
 				if (!check.validate())
 				{
@@ -400,6 +408,7 @@ public class FormPanelGame extends JPanel implements ActionListener
 		{
 			int n;
 
+			// Yes no option befor erase data.
 			Object[] options =
 			{
 				"Yes",
@@ -422,6 +431,23 @@ public class FormPanelGame extends JPanel implements ActionListener
 			{
 				System.out.println("Gone!");
 			}
+		}
+		//COmboBoxes
+		else if (e.getSource() == cb_name_editor)
+		{
+
+		}
+		else if (e.getSource() == cb_listDev)
+		{
+
+		}
+		else if (e.getSource() == cb_platform)
+		{
+
+		}
+		else if (e.getSource() == cb_type)
+		{
+
 		}
 	}
 

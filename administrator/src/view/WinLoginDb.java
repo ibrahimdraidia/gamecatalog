@@ -55,11 +55,13 @@ public class WinLoginDb extends JDialog implements ActionListener
 		super.setTitle("Database Connect");
 		super.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	
-		try {
+		try
+		{
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		}
 		catch (ClassNotFoundException | InstantiationException |
-				IllegalAccessException | UnsupportedLookAndFeelException e) {
+				IllegalAccessException | UnsupportedLookAndFeelException e)
+		{
 		}
 	
 		super.setVisible(true);
@@ -188,14 +190,13 @@ public class WinLoginDb extends JDialog implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		if(e.getSource() == okButton) {
-	
+		if(e.getSource() == okButton)
+		{
 			// If a pasword error has previously been signaled, reset.
 			if (isErrorPass) {
 				textPassword.setBackground(Color.white);
 				isErrorPass = false;
 			}
-
 			// If a database error has previously been signaled, reset.
 			if (isErrorData) {
 				textDatabase.setBackground(Color.white);
