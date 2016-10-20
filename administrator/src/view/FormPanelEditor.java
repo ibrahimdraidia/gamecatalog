@@ -179,6 +179,10 @@ public class FormPanelEditor extends JPanel implements ActionListener
 		right8.setBackground(Color.decode(TEXT_FIELD));
 		gridPanelText.setBackground(Color.decode(TEXT_FIELD));
 		gridPanelButton.setBackground(Color.decode(TEXT_FIELD));
+		
+		
+		
+		
 	}
 
 	private void initListiners()

@@ -8,6 +8,8 @@ import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.text.View;
 import view.LogoPanel;
 
@@ -46,5 +48,32 @@ public class TabPanel extends JPanel
 		tabPanelGame.addTab("Description", new FormPanelDescription(leds));
 		
 		this.add(tabPanelGame);
+		
+		tabPanelGame.addChangeListener(new ChangeListener() {
+			
+			@Override
+			public void stateChanged(ChangeEvent e) {
+			
+				switch (tabPanelGame.getSelectedIndex()) {
+				case 0:
+					CenterPanel.tablePane.removeAll();
+					CenterPanel.tablePane.add(new GameTablePanel(new LogoPanel()), BorderLayout.CENTER);
+					CenterPanel.tablePane.revalidate();
+					break;
+				case 1:
+					CenterPanel.tablePane.removeAll();
+					CenterPanel.tablePane.add(new EditorTablePanel(new LogoPanel()), BorderLayout.CENTER);
+					CenterPanel.tablePane.revalidate();
+					break;
+				case 2: break;
+				case 3: break;
+				case 4: break;
+
+				default:
+					break;
+				}
+				
+			}
+		});
 	}
 }

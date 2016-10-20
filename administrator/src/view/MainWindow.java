@@ -27,7 +27,7 @@ public class MainWindow extends JFrame
 	private JPanel mainPanel;
 	private LogoPanel logoPanel;
 	private TabPanel tabPanel;
-	private TablePanel tablePanel;
+	private GameTablePanel tablePanel;
 	//MenuBar
 	private JMenuBar menuBar;
 	JMenu menu1,
@@ -62,6 +62,7 @@ public class MainWindow extends JFrame
 		/*
 		 * The main window, principal BorderLayout and spacing.
 		 */
+		
 		mainPanel = (JPanel) this.getContentPane();
 		mainPanel.setBackground(Color.decode("#222222"));
 		mainPanel.setBorder(
@@ -73,7 +74,10 @@ public class MainWindow extends JFrame
 		 */
 		LogoPanel logoPanel = new LogoPanel();
 		mainPanel.add(logoPanel, BorderLayout.NORTH);
-		mainPanel.add(new TablePanel(logoPanel), BorderLayout.CENTER);
+		//CenterPanel.tablePane.add(new TabPanel(new LogoPanel()),BorderLayout.WEST);
+		//CenterPanel.tablePane.add(new GameTablePanel(new LogoPanel()),BorderLayout.CENTER);
+		mainPanel.add(new CenterPanel(), BorderLayout.CENTER);
+		//mainPanel.add(new GameTablePanel(logoPanel), BorderLayout.CENTER);
 	}
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

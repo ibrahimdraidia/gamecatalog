@@ -11,18 +11,21 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import model.EditorTableModel;
+import model.GameTableModel;
+
 /**
  *
  * @author GamyCats
  */
-public class TablePanel extends JPanel
+public class EditorTablePanel extends JPanel
 {
-	private DefaultTableModel data;
+	
 	private JTable table;
 	private JScrollPane scrollPane;
 	private LogoPanel leds;
 
-	public TablePanel(LogoPanel logoPanel)
+	public EditorTablePanel(LogoPanel logoPanel)
 	{
 		leds = logoPanel;
 		initObject();
@@ -33,18 +36,11 @@ public class TablePanel extends JPanel
 		this.setLayout(new BorderLayout());
 		this.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
 		this.setBackground(Color.decode("#303030"));
-		this.add(new TabPanel(leds), BorderLayout.WEST);
+		//this.add(new TabPanel(leds), BorderLayout.WEST);
 
 		
-		// Table
-		String[] cols = {"Game", "Editor", "Dev", "Platform", "Type", "Date",
-				"Image url", "Description"};
-		data = new DefaultTableModel(cols, 0);
-		table = new JTable(data);
-
-		// Add a row.
-		Object[] mess = {"JC Rigal", "jcrigal@free.fr", "hello world", 12};
-		data.addRow(mess);
+		table = new JTable(new EditorTableModel());
+		
 
 		scrollPane = new JScrollPane(table);
 		//boxLayout.add(scrollPane);
