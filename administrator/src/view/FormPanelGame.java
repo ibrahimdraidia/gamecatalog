@@ -20,11 +20,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.io.IOError;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Map;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -254,18 +250,22 @@ public class FormPanelGame extends JPanel implements ActionListener
 		cb_name_editor.setEditable(true);
 		cb_name_editor.setMaximumRowCount(5);
 		cb_name_editor.setBackground(Color.decode(TEXT_FIELD));
+		cb_name_editor.setPrototypeDisplayValue("XXXXXXXXXXX");
 		/**/
 		cb_listDev.setEditable(true);
 		cb_listDev.setMaximumRowCount(5);
 		cb_listDev.setBackground(Color.decode(TEXT_FIELD));
+		cb_listDev.setPrototypeDisplayValue("XXXXXXXXXXX");
 		/**/
 		cb_platform.setEditable(true);
 		cb_platform.setMaximumRowCount(5);
 		cb_platform.setBackground(Color.decode(TEXT_FIELD));
+		cb_platform.setPrototypeDisplayValue("XXXXXXXXXXX");
 		/**/
 		cb_type.setEditable(true);
 		cb_type.setMaximumRowCount(5);
 		cb_type.setBackground(Color.decode(TEXT_FIELD));
+		cb_type.setPrototypeDisplayValue("XXXXXXXXXXX");
 
 		//Buttons
 		filter = new JButton("filter");
