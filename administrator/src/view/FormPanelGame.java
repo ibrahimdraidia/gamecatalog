@@ -10,6 +10,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOError;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.BorderFactory;
@@ -18,7 +19,6 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
-import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import static javax.swing.JOptionPane.WARNING_MESSAGE;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -83,13 +83,15 @@ public class FormPanelGame extends JPanel implements ActionListener
 	private JButton create;
 	private JButton update;
 	private JButton delete;
+	private LogoPanel leds;
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *	Constructor
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
-	public FormPanelGame()
+	public FormPanelGame(LogoPanel logoPanel)
 	{
+		leds = logoPanel;
 		initObjects();
 		initListiners();
 	}
@@ -287,10 +289,12 @@ public class FormPanelGame extends JPanel implements ActionListener
 				VerifyRegex check = new VerifyRegex(1, tf_date.getText().toString());
 				if (!check.validate())
 				{
+					leds.setLedAlert();
 					showMessageDialog(
 							null, "Incorect date format, please use YYYY-MM-DD",
 							"Format date", ERROR_MESSAGE);
 					System.out.println("Incorect date format");
+					leds.setLedNormal();
 				}
 				else
 				{
@@ -302,9 +306,11 @@ public class FormPanelGame extends JPanel implements ActionListener
 				VerifyRegex check = new VerifyRegex(2, tf_url_image.getText().toString());
 				if (!check.validate())
 				{
+					leds.setLedAlert();
 					showMessageDialog(
 							null, "Incorect format for URL", "Format URL", WARNING_MESSAGE);
 					System.out.println("Incorect data entry format for URL");
+					leds.setLedNormal();
 				}
 				else
 				{
@@ -316,10 +322,12 @@ public class FormPanelGame extends JPanel implements ActionListener
 				VerifyRegex check = new VerifyRegex(3, tf_description.getText().toString());
 				if (!check.validate())
 				{
+					leds.setLedAlert();
 					showMessageDialog(
 							null, "Description is limited to 1000 characters",
 							"Format description", WARNING_MESSAGE);
 					System.out.println("Description is limited to 1000 characters");
+					leds.setLedNormal();
 				}
 				else
 				{
@@ -333,14 +341,60 @@ public class FormPanelGame extends JPanel implements ActionListener
 		}
 		else if (e.getSource() == update)
 		{
-			//Put values from text fields and parse into hash table.
-			Map<String, Object> createGameMap = new HashMap<String, Object>();
-			createGameMap.put("name_game", tf_name_game.getText().toString());
-			createGameMap.put("release_date", "1990-11-21");
-			createGameMap.put("pic_game", tf_url_image.getText().toString());
-			createGameMap.put("summary_game", tf_description.getText().toString());
-			//Parse 
-			new GameHandler().add(createGameMap);
+			if (tf_date.getText().trim().length() != 0)
+			{
+				VerifyRegex check = new VerifyRegex(1, tf_date.getText().toString());
+				if (!check.validate())
+				{
+					leds.setLedAlert();
+					showMessageDialog(
+							null, "Incorect date format, please use YYYY-MM-DD",
+							"Format date", ERROR_MESSAGE);
+					System.out.println("Incorect date format");
+					leds.setLedNormal();
+				}
+				else
+				{
+					createGame();
+				}
+			}
+			else if(tf_url_image.getText().trim().length() != 0)
+			{
+				VerifyRegex check = new VerifyRegex(2, tf_url_image.getText().toString());
+				if (!check.validate())
+				{
+					leds.setLedAlert();
+					showMessageDialog(
+							null, "Incorect format for URL", "Format URL", WARNING_MESSAGE);
+					System.out.println("Incorect data entry format for URL");
+					leds.setLedNormal();
+				}
+				else
+				{
+					createGame();
+				}
+			}
+			else if (tf_description.getText().trim().length() != 0)
+			{
+				VerifyRegex check = new VerifyRegex(3, tf_description.getText().toString());
+				if (!check.validate())
+				{
+					leds.setLedAlert();
+					showMessageDialog(
+							null, "Description is limited to 1000 characters",
+							"Format description", WARNING_MESSAGE);
+					System.out.println("Description is limited to 1000 characters");
+					leds.setLedNormal();
+				}
+				else
+				{
+					createGame();
+				}
+			}
+			else
+			{
+				createGame();
+			}
 		}
 		else if (e.getSource() == delete)
 		{
@@ -373,14 +427,26 @@ public class FormPanelGame extends JPanel implements ActionListener
 
 	private void createGame()
 	{
-		//Put values from text fields and parse into hash table.
-		Map<String, Object> createGameMap = new HashMap<String, Object>();
-		createGameMap.put("name_game", tf_name_game.getText().toString());
-		createGameMap.put("release_date", "1990-11-21");
-		createGameMap.put("pic_game", tf_url_image.getText().toString());
-		createGameMap.put("summary_game", tf_description.getText().toString());
-		//Parse 
-		new GameHandler().add(createGameMap);
+		try
+		{
+			//Put values from text fields and parse into hash table.
+			Map<String, Object> createGameMap = new HashMap<String, Object>();
+			createGameMap.put("name_game", tf_name_game.getText().toString());
+			createGameMap.put("release_date", "1990-11-21");
+			createGameMap.put("pic_game", tf_url_image.getText().toString());
+			createGameMap.put("summary_game", tf_description.getText().toString());
+			//Parse 
+			new GameHandler().add(createGameMap);
+		}
+		catch (Exception e)
+		{
+			leds.setGreenLedOff();
+			leds.setRedLedOn();
+			showMessageDialog(
+					null, "Write error ...",
+					"Format description", WARNING_MESSAGE);
+			leds.setRedLedOff();
+			leds.setGreenLedOn();
+		}
 	}
 }
-

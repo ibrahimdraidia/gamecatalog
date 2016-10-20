@@ -9,7 +9,6 @@ import java.awt.FlowLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import view.Icons;
 
 /**
  *
@@ -76,5 +75,15 @@ public class LogoPanel extends JPanel
 	public void setRedLedOff()
 	{
 		redLed.setIcon(icons.iconRedLedOff50());
+	}
+	public void setLedNormal()
+	{
+		greenLed.setIcon(icons.iconGreenLedOn50());
+		redLed.setIcon(icons.iconRedLedOff50());
+	}
+	public void setLedAlert()
+	{
+		greenLed.setIcon(icons.iconGreenLedOff50());
+		redLed.setIcon(icons.iconRedLedOn50());
 	}
 }

@@ -56,13 +56,15 @@ public class FormPanelDev extends JPanel implements ActionListener
 	private JButton create;
 	private JButton update;
 	private JButton delete;
+	private LogoPanel leds;
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *	Constructor
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
-	public FormPanelDev()
+	public FormPanelDev(LogoPanel logoPanel)
 	{
+		leds = logoPanel;
 		initObjects();
 		initListiners();
 	}

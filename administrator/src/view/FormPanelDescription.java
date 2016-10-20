@@ -3,15 +3,21 @@
  */
 package view;
 
+import db.GameHandler;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.WARNING_MESSAGE;
+import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -37,13 +43,15 @@ public class FormPanelDescription extends JPanel implements ActionListener
 	private JButton create;
 	private JButton update;
 	private JButton delete;
+	private LogoPanel leds;
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *	Constructor
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
-	public FormPanelDescription()
+	public FormPanelDescription(LogoPanel logoPanel)
 	{
+		leds = logoPanel;
 		initObjects();
 		initListiners();
 	}
@@ -113,7 +121,106 @@ public class FormPanelDescription extends JPanel implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		if(e.getSource() == filter)
+		{
+			
+		}
+		else if (e.getSource() == create)
+		{
+			if (ta_description.getText().trim().length() != 0)
+			{
+				VerifyRegex check = new VerifyRegex(3, ta_description.getText().toString());
+				if (!check.validate())
+				{
+					leds.setLedAlert();
+					showMessageDialog(
+							null, "Description is limited to 1000 characters",
+							"Format description", WARNING_MESSAGE);
+					System.out.println("Description is limited to 1000 characters");
+					leds.setLedNormal();
+				}
+				else
+				{
+					createGame();
+				}
+			}
+			else
+			{
+				createGame();
+			}
+		}
+		else if (e.getSource() == update)
+		{
+			if (ta_description.getText().trim().length() != 0)
+			{
+				VerifyRegex check = new VerifyRegex(3, ta_description.getText().toString());
+				if (!check.validate())
+				{
+					leds.setLedAlert();
+					showMessageDialog(
+							null, "Description is limited to 1000 characters",
+							"Format description", WARNING_MESSAGE);
+					System.out.println("Description is limited to 1000 characters");
+					leds.setLedNormal();
+				}
+				else
+				{
+					createGame();
+				}
+			}
+			else
+			{
+				createGame();
+			}
+		}
+		else if (e.getSource() == delete)
+		{
+			int n;
+
+			Object[] options =
+			{
+				"Yes",
+				"No"
+			};
+
+			n = JOptionPane.showOptionDialog(FormPanelDescription.this,
+					"Are you sure that you want to proceed? \n"
+							+ "the current record will be\npermanantly deleted.",
+					"Carfull",
+					JOptionPane.YES_NO_CANCEL_OPTION,
+					JOptionPane.QUESTION_MESSAGE,
+					null,
+					options,
+					options[1]);
+
+			System.out.println("Going, going, ...");
+
+			if (n == JOptionPane.OK_OPTION)
+			{
+				System.out.println("Gone!");
+			}
+		}
 	}
 
+	private void createGame()
+	{
+		try
+		{
+			//Put values from text fields and parse into hash table.
+			Map<String, Object> createGameMap = new HashMap<String, Object>();
+			createGameMap.put("summary_game", ta_description.getText().toString());
+			//Parse 
+			new GameHandler().add(createGameMap);
+		}
+		catch (Exception e)
+		{
+			leds.setGreenLedOff();
+			leds.setRedLedOn();
+			showMessageDialog(
+					null, "Write error ...",
+					"Format description", WARNING_MESSAGE);
+			leds.setRedLedOff();
+			leds.setGreenLedOn();
+		}
+	}
 }

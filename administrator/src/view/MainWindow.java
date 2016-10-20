@@ -70,8 +70,9 @@ public class MainWindow extends JFrame
 		/*
 		 * Set border panels.
 		 */
-		mainPanel.add(new LogoPanel(), BorderLayout.NORTH);
-		mainPanel.add(new TablePanel(), BorderLayout.CENTER);
+		LogoPanel logoPanel = new LogoPanel();
+		mainPanel.add(logoPanel, BorderLayout.NORTH);
+		mainPanel.add(new TablePanel(logoPanel), BorderLayout.CENTER);
 	}
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

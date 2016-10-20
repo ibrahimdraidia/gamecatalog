@@ -20,9 +20,11 @@ public class TablePanel extends JPanel
 	private DefaultTableModel data;
 	private JTable table;
 	private JScrollPane scrollPane;
+	private LogoPanel leds;
 
-	public TablePanel()
+	public TablePanel(LogoPanel logoPanel)
 	{
+		leds = logoPanel;
 		initObject();
 	}
 
@@ -31,7 +33,7 @@ public class TablePanel extends JPanel
 		this.setLayout(new BorderLayout());
 		this.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
 		this.setBackground(Color.decode("#303030"));
-		this.add(new TabPanel(), BorderLayout.WEST);
+		this.add(new TabPanel(leds), BorderLayout.WEST);
 
 		
 		// Table
