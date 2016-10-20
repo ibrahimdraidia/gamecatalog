@@ -59,7 +59,7 @@ public class GameHandler extends Database implements CrudInterface{
                                                 
                         _ps = _connection.prepareStatement("INSERT INTO DEVELOPS (ID_GAME, ID_DEV) VALUES (?,?)");
                         _ps.setInt(1, Integer.parseInt(String.valueOf(_game.getId_game())));
-                        _ps.setInt(2, Integer.parseInt(data.get("id_dev").toString()));
+                        _ps.setInt(2, Integer.parseInt(String.valueOf(_game.getId_game())));
                         if(_ps.executeUpdate() == 1){
                             System.out.println("Game has been added to Develops");                                                 
                         }

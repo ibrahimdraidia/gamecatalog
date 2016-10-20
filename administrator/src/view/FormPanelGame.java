@@ -19,6 +19,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
+import static javax.swing.JOptionPane.WARNING_MESSAGE;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
@@ -58,7 +59,7 @@ public class FormPanelGame extends JPanel implements ActionListener
 	private JTextField tf_name_game;
 	//Editor
 	private JLabel     lb_name_editor;
-	private JTextField tf_name_editor;
+	private JComboBox  cb_name_editor;
 	//Developer
 	private JLabel     lb_listDev;
 	private JComboBox  cb_listDev;
@@ -150,7 +151,7 @@ public class FormPanelGame extends JPanel implements ActionListener
 
 		//Instantiate Text fields and combo boxes
 		tf_name_game = new JTextField();
-		tf_name_editor = new JTextField();
+		cb_name_editor = new JComboBox<Object>();
 		cb_listDev = new JComboBox<>();
 		cb_platform = new JComboBox<>();
 		cb_type = new JComboBox<>();
@@ -160,12 +161,15 @@ public class FormPanelGame extends JPanel implements ActionListener
 
 		//TextField columns
 		tf_name_game.setColumns(TEXT_FIELD_WIDTH);
-		tf_name_editor.setColumns(TEXT_FIELD_WIDTH);
 		tf_date.setColumns(TEXT_FIELD_WIDTH);
 		tf_url_image.setColumns(TEXT_FIELD_WIDTH);
 		tf_description.setColumns(TEXT_FIELD_WIDTH);
 
 		// Combox setup.
+		cb_name_editor.setEditable(true);
+		cb_name_editor.setMaximumRowCount(5);
+		cb_name_editor.setBackground(Color.decode(TEXT_FIELD));
+		/**/
 		cb_listDev.setEditable(true);
 		cb_listDev.setMaximumRowCount(5);
 		cb_listDev.setBackground(Color.decode(TEXT_FIELD));
@@ -202,7 +206,7 @@ public class FormPanelGame extends JPanel implements ActionListener
 		left8.add(lb_description);
 		/**/
 		right1.add(tf_name_game);
-		right2.add(tf_name_editor);
+		right2.add(cb_name_editor);
 		right3.add(cb_listDev);
 		right4.add(cb_platform);
 		right5.add(cb_type);
@@ -278,7 +282,6 @@ public class FormPanelGame extends JPanel implements ActionListener
 		}
 		else if (e.getSource() == create)
 		{
-			Dialog dia = new Dialog("Hello", "World");
 			if (tf_date.getText().trim().length() != 0)
 			{
 				VerifyRegex check = new VerifyRegex(1, tf_date.getText().toString());
@@ -300,7 +303,7 @@ public class FormPanelGame extends JPanel implements ActionListener
 				if (!check.validate())
 				{
 					showMessageDialog(
-							null, "Incorect format for URL", "Format URL", ERROR_MESSAGE);
+							null, "Incorect format for URL", "Format URL", WARNING_MESSAGE);
 					System.out.println("Incorect data entry format for URL");
 				}
 				else
@@ -315,7 +318,7 @@ public class FormPanelGame extends JPanel implements ActionListener
 				{
 					showMessageDialog(
 							null, "Description is limited to 1000 characters",
-							"Format description", ERROR_MESSAGE);
+							"Format description", WARNING_MESSAGE);
 					System.out.println("Description is limited to 1000 characters");
 				}
 				else
@@ -341,11 +344,30 @@ public class FormPanelGame extends JPanel implements ActionListener
 		}
 		else if (e.getSource() == delete)
 		{
-			JOptionPane.showMessageDialog(
-					null, "Are you sure that you want to proceed? \n"
+			int n;
+
+			Object[] options =
+			{
+				"Yes",
+				"No"
+			};
+
+			n = JOptionPane.showOptionDialog(FormPanelGame.this,
+					"Are you sure that you want to proceed? \n"
 							+ "the current record will be\npermanantly deleted.",
-					"Carfull", INFORMATION_MESSAGE);
-			System.out.println("Description is limited to 1000 characters");
+					"Carfull",
+					JOptionPane.YES_NO_CANCEL_OPTION,
+					JOptionPane.QUESTION_MESSAGE,
+					null,
+					options,
+					options[1]);
+
+			System.out.println("Going, going, ...");
+
+			if (n == JOptionPane.OK_OPTION)
+			{
+				System.out.println("Gone!");
+			}
 		}
 	}
 
@@ -361,3 +383,4 @@ public class FormPanelGame extends JPanel implements ActionListener
 		new GameHandler().add(createGameMap);
 	}
 }
+
