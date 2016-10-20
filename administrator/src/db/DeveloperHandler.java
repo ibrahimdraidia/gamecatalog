@@ -6,12 +6,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Map;
 
 import entity.Developer;
+import entity.Editor;
+import entity.Platform;
+import entity.Type;
 import interfaces.CrudInterface;
 
-public class DeveloperHandler extends Database implements CrudInterface{
+public  class DeveloperHandler extends Database implements CrudInterface{
 
 	private Connection _connection;
 	private PreparedStatement _ps;
@@ -98,38 +102,44 @@ public class DeveloperHandler extends Database implements CrudInterface{
               }
       }
 	}
+
 	@Override
 	public ArrayList<?> getAll() {
 		// temp arrayList
-				ArrayList<Object> tempList = new ArrayList<>();
-				
-				try {
-					_s = _connection.createStatement();
+		ArrayList<Developer> tempList = new ArrayList<>();
+		
+		try {
+			_s = _connection.createStatement();
 
-					if(_s.execute("SELECT * FROM DEVELOPER"))
-					{
-						// temp platform obj
-						Developer temp;
-						
-						// get result
-						_rs = _s.getResultSet();
-						
-						while(_rs.next())
-						{
-							temp = new Developer();
-							temp.setId_developer(_rs.getInt("ID_DEV"));
-							temp.setDeveloper_name(_rs.getString("NAME_DEV"));
-							
-							tempList.add(temp);
-						}
-						
-					}
+			if(_s.execute("SELECT * FROM DEVELOPER"))
+			{
+				// temp platform obj
+				Developer temp;
+				
+				// get result
+				_rs = _s.getResultSet();
+				
+				while(_rs.next())
+				{
+					temp = new Developer();
+					temp.setId_developer(_rs.getInt("ID_DEV"));
+					temp.setDeveloper_name(_rs.getString("NAME_DEV"));
 					
-				} catch (SQLException e) {
-					e.printStackTrace();
+					tempList.add(temp);
 				}
-				return tempList;
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return tempList;
 	}
+	
+	
+	
+
+	
 
 	
 }

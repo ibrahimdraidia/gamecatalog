@@ -4,6 +4,7 @@ package interfaces;
 import java.util.ArrayList;
 import java.util.Map;
 
+
 public interface CrudInterface {
 	
 	public void add(Map<String, ?> data);

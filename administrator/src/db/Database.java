@@ -15,14 +15,28 @@ public class Database
 	private String _password;
 	private String _url;
 	private Connection _connection;
+	private boolean _isRemote;
 	
 	public Database()
 	{
-		_dbhost = "localhost";
-		_dbname = "gamecatalog";
-		_username = "root";
-		_password = "pass";
-		_url = "jdbc:mysql://"+_dbhost+"/"+_dbname+"?useSSL=false";
+		_isRemote = true;
+		if(_isRemote)
+		{
+			_dbhost = "ibrahimdraidia.com";
+			_dbname = "draidia2_gamecatalog";
+			_username = "draidia2_afpa";
+			_password = "afpa2016";
+			_url = "jdbc:mysql://"+_dbhost+"/"+_dbname+"?useSSL=false";
+		}
+		else
+		{
+			_dbhost = "localhost";
+			_dbname = "gamecatalog";
+			_username = "root";
+			_password = "pass";
+			_url = "jdbc:mysql://"+_dbhost+"/"+_dbname+"?useSSL=false";
+		}
+		
 	}
 	
 	public Connection getInstance()

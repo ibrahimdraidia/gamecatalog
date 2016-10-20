@@ -1,12 +1,18 @@
 package db;
 
+import entity.Developer;
+import entity.Editor;
 import entity.Game;
+import entity.Platform;
+import entity.Type;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Map;
 
 import interfaces.CrudInterface;
@@ -112,6 +118,10 @@ public class GameHandler extends Database implements CrudInterface{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
+
+
 
 
 

@@ -30,6 +30,10 @@ public class Platform extends Type
 		this._name_platform = _name_platform;
 	}
 
-	
+	@Override
+	public String toString() {
+		
+		return _name_platform;
+	}
 
 }

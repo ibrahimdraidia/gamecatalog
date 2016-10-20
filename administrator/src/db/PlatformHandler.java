@@ -6,12 +6,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Map;
 
+import entity.Developer;
+import entity.Editor;
 import entity.Platform;
+import entity.Type;
 import interfaces.CrudInterface;
 
-public class PlatformHandler extends Database implements CrudInterface{
+public  class PlatformHandler extends Database implements CrudInterface{
 
 	private Connection _connection;
 	private PreparedStatement _ps;
@@ -99,40 +103,40 @@ public class PlatformHandler extends Database implements CrudInterface{
             }
 		}
 	}
+
 	@Override
 	public ArrayList<?> getAll() {
-		
 		// temp arrayList
-		ArrayList<Object> tempList = new ArrayList<>();
-		
-		try {
-			_s = _connection.createStatement();
+				ArrayList<Platform> tempList = new ArrayList<>();
+				
+				try {
+					_s = _connection.createStatement();
 
-			if(_s.execute("SELECT * FROM PLATFORM"))
-			{
-				// temp platform obj
-				Platform temp;
-				
-				// get result
-				_rs = _s.getResultSet();
-				
-				while(_rs.next())
-				{
-					temp = new Platform();
-					temp.setId_platform(_rs.getInt("ID_PLATFORM"));
-					temp.setName_platform(_rs.getString("NAME_PLATFORM"));
+					if(_s.execute("SELECT * FROM PLATFORM"))
+					{
+						// temp platform obj
+						Platform temp;
+						
+						// get result
+						_rs = _s.getResultSet();
+						
+						while(_rs.next())
+						{
+							temp = new Platform();
+							temp.setId_platform(_rs.getInt("ID_PLATFORM"));
+							temp.setName_platform(_rs.getString("NAME_PLATFORM"));
+							
+							tempList.add(temp);
+						}
+						
+					}
 					
-					tempList.add(temp);
+				} catch (SQLException e) {
+					e.printStackTrace();
 				}
-				
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return tempList;
+				return tempList;
 	}
-
+	
 	
 
 }

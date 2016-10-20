@@ -31,4 +31,10 @@ public class Game extends Editor
 	{
 		this._name_game = _name_game;
 	}
+	
+	@Override
+	public String toString() {
+		
+		return _name_game;
+	}
 }

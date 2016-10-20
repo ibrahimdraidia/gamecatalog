@@ -6,12 +6,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Map;
 
+import entity.Developer;
+import entity.Editor;
 import entity.Platform;
+import entity.Type;
 import interfaces.CrudInterface;
 
-public class TypeHandler extends Database implements CrudInterface{
+public  class TypeHandler extends Database implements CrudInterface{
 
 	private Connection _connection;
 	private PreparedStatement _ps;
@@ -104,36 +108,35 @@ public class TypeHandler extends Database implements CrudInterface{
 	@Override
 	public ArrayList<?> getAll() {
 		
-		// temp arrayList
-		ArrayList<Object> tempList = new ArrayList<>();
-		
-		try {
-			_s = _connection.createStatement();
+				ArrayList<Type> tempList = new ArrayList<>();
+				try {
+					_s = _connection.createStatement();
 
-			if(_s.execute("SELECT * FROM GENRE"))
-			{
-				// temp platform obj
-				Platform temp;
-				
-				// get result
-				_rs = _s.getResultSet();
-				
-				while(_rs.next())
-				{
-					temp = new Platform();
-					temp.setId_platform(_rs.getInt("ID_GENRE"));
-					temp.setName_platform(_rs.getString("NAME_GENRE"));
+					if(_s.execute("SELECT * FROM GENRE"))
+					{
+						// temp platform obj
+						Type temp;
+						
+						// get result
+						_rs = _s.getResultSet();
+						
+						while(_rs.next())
+						{
+							temp = new Type();
+							temp.setId_type(_rs.getInt("ID_GENRE"));
+							temp.set_name_type(_rs.getString("NAME_GENRE"));
+							
+							tempList.add(temp);
+						}
+						
+					}
 					
-					tempList.add(temp);
+				} catch (SQLException e) {
+					e.printStackTrace();
 				}
-				
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return tempList;
+				return tempList;
 	}
+
 
 }
 

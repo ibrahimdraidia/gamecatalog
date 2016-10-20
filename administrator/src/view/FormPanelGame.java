@@ -3,14 +3,27 @@
  */
 package view;
 
+import db.DeveloperHandler;
+import db.EditorHandler;
 import db.GameHandler;
+import db.PlatformHandler;
+import db.TypeHandler;
+import entity.Developer;
+import entity.Editor;
+import entity.Platform;
+import entity.Type;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -98,6 +111,7 @@ public class FormPanelGame extends JPanel implements ActionListener
  *	Objects
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
+	@SuppressWarnings("unchecked")
 	private void initObjects()
 	{
 		//Panels
@@ -151,10 +165,78 @@ public class FormPanelGame extends JPanel implements ActionListener
 
 		//Instantiate Text fields and combo boxes
 		tf_name_game = new JTextField();
-		cb_name_editor = new JComboBox<Object>();
+		
+		
+		/*
+		 *  Editors List
+		 */
+		ArrayList<Editor> listEditor =  (ArrayList<Editor>) new EditorHandler().getAll();
+		cb_name_editor = new JComboBox<>();
+		cb_name_editor.setEditable(false);
+		if(!listEditor.isEmpty())
+		{
+			for (int i = 0; i < listEditor.size(); i++) {
+				if(listEditor.get(i) != null)
+				{
+					cb_name_editor.addItem(listEditor.get(i));
+				}
+			}
+		}
+		
+		
+		/*
+		 * Developers list
+		 */
+		ArrayList<Developer> listDevlopers =  (ArrayList<Developer>) new DeveloperHandler().getAll();
 		cb_listDev = new JComboBox<>();
+		cb_listDev.setEditable(false);
+		
+		if(!listDevlopers.isEmpty())
+		{
+			for (int i = 0; i < listDevlopers.size(); i++) {
+				if(listDevlopers.get(i) != null)
+				{
+					cb_listDev.addItem(listDevlopers.get(i));
+				}
+			}
+		}
+		
+		
+		/*
+		 * Platform list
+		 */
+		ArrayList<Platform> listPlatforms =  (ArrayList<Platform>) new PlatformHandler().getAll();
+		ArrayList<String> listNamePlatform = new ArrayList<>();
 		cb_platform = new JComboBox<>();
+		cb_platform.setEditable(false);
+		if(!listPlatforms.isEmpty())
+		{
+			for (int i = 0; i < listPlatforms.size(); i++) {
+				if(listPlatforms.get(i) != null)
+				{
+					cb_platform.addItem(listPlatforms.get(i));
+				}
+			}
+		}
+		
+		
+		/*
+		 * Type list
+		 */
+		ArrayList<Type> listTypes =  (ArrayList<Type>) new TypeHandler().getAll();
 		cb_type = new JComboBox<>();
+		cb_type.setEditable(false);
+		if(!listTypes.isEmpty())
+		{
+			for (int i = 0; i < listTypes.size(); i++) {
+				if(listTypes.get(i) != null)
+				{
+					cb_type.addItem(listTypes.get(i));
+				}
+			}
+		}
+		
+		
 		tf_date = new JTextField();
 		tf_url_image = new JTextField();
 		tf_description = new JTextField();
@@ -290,7 +372,7 @@ public class FormPanelGame extends JPanel implements ActionListener
 					showMessageDialog(
 							null, "Incorect date format, please use YYYY-MM-DD",
 							"Format date", ERROR_MESSAGE);
-					System.out.println("Incorect date format");
+					System.out.println("Incorrect date format");
 				}
 				else
 				{

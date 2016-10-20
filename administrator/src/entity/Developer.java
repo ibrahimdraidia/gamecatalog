@@ -48,5 +48,10 @@ public class Developer extends Platform
 		return _listDev;
 	}
 	
+	@Override
+	public String toString() {
+		
+		return _developer_name;
+	}
 
 }

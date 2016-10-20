@@ -6,16 +6,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Map;
 
-
+import entity.Developer;
 import entity.Editor;
+import entity.Platform;
+import entity.Type;
 import interfaces.CrudInterface;
 
 /*
  * Add editor.
  */
-public class EditorHandler extends Database implements CrudInterface{
+public  class EditorHandler extends Database implements CrudInterface{
 
 	private Connection _connection;
 	private PreparedStatement _ps;
@@ -100,7 +104,7 @@ public class EditorHandler extends Database implements CrudInterface{
 	@Override
 	public ArrayList<?> getAll() {
 		// temp arrayList
-		ArrayList<Object> tempList = new ArrayList<>();
+		ArrayList<Editor> tempList = new ArrayList<>();
 		
 		try {
 			_s = _connection.createStatement();
@@ -116,8 +120,8 @@ public class EditorHandler extends Database implements CrudInterface{
 				while(_rs.next())
 				{
 					temp = new Editor();
-					temp.setId_platform(_rs.getInt("ID_EDITOR"));
-					temp.setName_platform(_rs.getString("NAME_EDITOR"));
+					temp.setId_editor(_rs.getInt("ID_EDITOR"));
+					temp.setEditor_name(_rs.getString("NAME_EDITOR"));
 					
 					tempList.add(temp);
 				}
@@ -130,6 +134,7 @@ public class EditorHandler extends Database implements CrudInterface{
 		return tempList;
 	}
 
+	
 	
 }
 

@@ -24,4 +24,10 @@ public class Editor  extends Developer
 	{
 		this._editor_name = _editor_name;
 	}
+	
+	@Override
+	public String toString() {
+		
+		return _editor_name;
+	}
 }
