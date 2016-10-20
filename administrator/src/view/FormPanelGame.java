@@ -43,7 +43,8 @@ public class FormPanelGame extends JPanel implements ActionListener
 	private final String TEXT_COLOUR = "#AAAAAA";
 	private final String TEXT_FIELD = "#404040";
 	private final String HEADDER = "Gc";
-	private final int TEXT_FIELD_WIDTH = 11;
+	private final String COMBO_WIDTH = "XXXXXXXXXXXXXX";
+	private final int TEXT_FIELD_WIDTH = 12;
 	private JPanel containerPanel;
 	private JPanel left1;
 	private JPanel left2;
@@ -250,22 +251,22 @@ public class FormPanelGame extends JPanel implements ActionListener
 		cb_name_editor.setEditable(true);
 		cb_name_editor.setMaximumRowCount(5);
 		cb_name_editor.setBackground(Color.decode(TEXT_FIELD));
-		cb_name_editor.setPrototypeDisplayValue("XXXXXXXXXXX");
+		cb_name_editor.setPrototypeDisplayValue(COMBO_WIDTH);
 		/**/
 		cb_listDev.setEditable(true);
 		cb_listDev.setMaximumRowCount(5);
 		cb_listDev.setBackground(Color.decode(TEXT_FIELD));
-		cb_listDev.setPrototypeDisplayValue("XXXXXXXXXXX");
+		cb_listDev.setPrototypeDisplayValue(COMBO_WIDTH);
 		/**/
 		cb_platform.setEditable(true);
 		cb_platform.setMaximumRowCount(5);
 		cb_platform.setBackground(Color.decode(TEXT_FIELD));
-		cb_platform.setPrototypeDisplayValue("XXXXXXXXXXX");
+		cb_platform.setPrototypeDisplayValue(COMBO_WIDTH);
 		/**/
 		cb_type.setEditable(true);
 		cb_type.setMaximumRowCount(5);
 		cb_type.setBackground(Color.decode(TEXT_FIELD));
-		cb_type.setPrototypeDisplayValue("XXXXXXXXXXX");
+		cb_type.setPrototypeDisplayValue(COMBO_WIDTH);
 
 		//Buttons
 		filter = new JButton("filter");
