@@ -9,6 +9,7 @@ import java.awt.FlowLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import view.Icons;
 
 /**
  *
@@ -16,10 +17,12 @@ import javax.swing.JPanel;
  */
 public class LogoPanel extends JPanel
 {
+	public boolean isConnected;
 	private JPanel flowRight;
 	private JLabel logo;
 	private JLabel greenLed;
 	private JLabel redLed;
+	private Icons icons;
 
 	public LogoPanel()
 	{
@@ -33,8 +36,9 @@ public class LogoPanel extends JPanel
 		this.setBorder(BorderFactory.createEmptyBorder(15,15,5,15));
 
 		// Set the logo
-		Icons icons = new Icons();
-		logo = new JLabel(icons.logo());
+		icons = new Icons();
+		logo = new JLabel();
+		logo.setIcon(icons.logo());
 		this.add(logo, BorderLayout.WEST);
 
 		// Set the leds
@@ -48,5 +52,29 @@ public class LogoPanel extends JPanel
 
 		flowRight.add(greenLed);
 		flowRight.add(redLed);
+	}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *	Gui led logic.
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ */
+	public void setGreenLedOn()
+	{
+		isConnected = true;
+		greenLed.setIcon(icons.iconGreenLedOn50());
+		setRedLedOff();
+	}
+	public void setGreenLedOff()
+	{
+		isConnected = false;
+		greenLed.setIcon(icons.iconGreenLedOff50());
+	}
+	public void setRedLedOn()
+	{
+		redLed.setIcon(icons.iconRedLedOn50());
+	}
+	public void setRedLedOff()
+	{
+		redLed.setIcon(icons.iconRedLedOff50());
 	}
 }

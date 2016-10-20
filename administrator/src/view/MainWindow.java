@@ -21,7 +21,6 @@ import javax.swing.UnsupportedLookAndFeelException;
  */
 public class MainWindow extends JFrame
 {
-
 	// Exteriour border
 	private final int BORDER = 10;
 	//Panels
@@ -46,7 +45,7 @@ public class MainWindow extends JFrame
 		testLookAndFeel();
 		super.setTitle("GameCatalog");
 		super.setVisible(true);
-		super.setMinimumSize(new Dimension(1368, 768));
+		super.setMinimumSize(new Dimension(1400, 800));
 		super.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		initMenuBar();

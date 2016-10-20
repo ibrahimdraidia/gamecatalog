@@ -19,6 +19,7 @@ public class TabPanel extends JPanel
 	JTabbedPane tabPanelEditor;
 	JTabbedPane tabPanelDev;
 	JTabbedPane tabPanel;
+	JTabbedPane tabPanelDescription;
 
 	public TabPanel()
 	{
@@ -38,6 +39,7 @@ public class TabPanel extends JPanel
 		tabPanelGame.addTab("Editor", new FormPanelEditor());
 		tabPanelGame.addTab("Dev", new FormPanelDev());
 		tabPanelGame.addTab("Platform", new FormPanelPlatform());
+		tabPanelGame.addTab("Description", new FormPanelDescription());
 		
 		this.add(tabPanelGame);
 	}

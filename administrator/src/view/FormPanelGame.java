@@ -13,13 +13,16 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 /**
  *
@@ -28,19 +31,27 @@ import javax.swing.border.TitledBorder;
 public class FormPanelGame extends JPanel implements ActionListener
 {
 	private final String TEXT_COLOUR = "#AAAAAA";
-	private final String TEXT_FIELD = "#505050";
-	private final String BUTTON_COLOUR = "#509950";
+	private final String TEXT_FIELD = "#404040";
+	private final String HEADDER = "Gc";
+	private final int TEXT_FIELD_WIDTH = 11;
 	private JPanel containerPanel;
-	private JPanel line1;
-	private JPanel line2;
-	private JPanel line3;
-	private JPanel line4;
-	private JPanel line5;
-	private JPanel line6;
-	private JPanel line7;
-	private JPanel line8;
-	private JPanel boxPanelLeft;
-	private JPanel boxPanelRight;
+	private JPanel left1;
+	private JPanel left2;
+	private JPanel left3;
+	private JPanel left4;
+	private JPanel left5;
+	private JPanel left6;
+	private JPanel left7;
+	private JPanel left8;
+	private JPanel right1;
+	private JPanel right2;
+	private JPanel right3;
+	private JPanel right4;
+	private JPanel right5;
+	private JPanel right6;
+	private JPanel right7;
+	private JPanel right8;
+	private JPanel gridPanelText;
 	private JPanel gridPanelButton;
 	//Game
 	private JLabel     lb_name_game;
@@ -91,24 +102,39 @@ public class FormPanelGame extends JPanel implements ActionListener
 		//Panels
 		this.setLayout(new BorderLayout());
 		this.setBorder(BorderFactory.createTitledBorder(
-				null, "Here we go !", TitledBorder.DEFAULT_JUSTIFICATION,
+				null, HEADDER, TitledBorder.DEFAULT_JUSTIFICATION,
 				TitledBorder.DEFAULT_POSITION,
 				new Font("Dialog", 1, 12),
 				new Color(250, 250, 250)));
 		containerPanel = new JPanel();
-		boxPanelLeft = new JPanel();
-		boxPanelLeft.setLayout(new BoxLayout(boxPanelLeft, BoxLayout.Y_AXIS));
-		boxPanelRight = new JPanel();
-		boxPanelRight.setLayout(new BoxLayout(boxPanelRight, BoxLayout.Y_AXIS));
+		gridPanelText = new JPanel();
+		gridPanelText.setLayout(new GridLayout(8, 2, 2, 2));
+		gridPanelText.setBorder(BorderFactory.createEmptyBorder(10, 5, 10, 5));
+		left1 = new JPanel();
+		left2 = new JPanel();
+		left3 = new JPanel();
+		left4 = new JPanel();
+		left5 = new JPanel();
+		left6 = new JPanel();
+		left7 = new JPanel();
+		left8 = new JPanel();
+		right1= new JPanel();
+		right2= new JPanel();
+		right3= new JPanel();
+		right4= new JPanel();
+		right5= new JPanel();
+		right6= new JPanel();
+		right7= new JPanel();
+		right8= new JPanel();
 		gridPanelButton = new JPanel(new GridLayout(1, 4, 9, 8));
-		gridPanelButton.setBorder(BorderFactory.createEmptyBorder(50, 5, 5, 5));
+		gridPanelButton.setBorder(BorderFactory.createEmptyBorder(10, 5, 10, 5));
 
 		//Instantiane lables, annotate.
 		lb_name_game = new JLabel("Game : ", JLabel.CENTER);
 		lb_name_editor = new JLabel("Editor : ", JLabel.CENTER);
-		lb_listDev = new JLabel("Developer : ", JLabel.CENTER);
+		lb_listDev = new JLabel("Devteam : ", JLabel.CENTER);
 		lb_platform = new JLabel("Platform : ", JLabel.CENTER);
-		lb_type = new JLabel("Type : ", JLabel.CENTER);
+		lb_type = new JLabel("Genre : ", JLabel.CENTER);
 		lb_date = new JLabel("Date : ", JLabel.CENTER);
 		lb_url_image = new JLabel("Image url : ", JLabel.CENTER);
 		lb_description = new JLabel("Description : ", JLabel.CENTER);
@@ -132,6 +158,13 @@ public class FormPanelGame extends JPanel implements ActionListener
 		tf_url_image = new JTextField();
 		tf_description = new JTextField();
 
+		//TextField columns
+		tf_name_game.setColumns(TEXT_FIELD_WIDTH);
+		tf_name_editor.setColumns(TEXT_FIELD_WIDTH);
+		tf_date.setColumns(TEXT_FIELD_WIDTH);
+		tf_url_image.setColumns(TEXT_FIELD_WIDTH);
+		tf_description.setColumns(TEXT_FIELD_WIDTH);
+
 		// Combox setup.
 		cb_listDev.setEditable(true);
 		cb_listDev.setMaximumRowCount(5);
@@ -154,29 +187,45 @@ public class FormPanelGame extends JPanel implements ActionListener
 		filter.setBackground(Color.red);
 
 		// Add the grid to the main panel.
-		containerPanel.add(boxPanelLeft);
-		containerPanel.add(boxPanelRight);
+		containerPanel.add(gridPanelText);
 		this.add(containerPanel, BorderLayout.CENTER);
 		this.add(gridPanelButton, BorderLayout.SOUTH);
 
 		// Add lables text fields and comboboxes
-		boxPanelLeft.add(lb_name_game);
-		boxPanelLeft.add(lb_name_editor);
-		boxPanelLeft.add(lb_listDev);
-		boxPanelLeft.add(lb_platform);
-		boxPanelLeft.add(lb_type);
-		boxPanelLeft.add(lb_date);
-		boxPanelLeft.add(lb_url_image);
-		boxPanelLeft.add(lb_description);
-
-		boxPanelRight.add(tf_name_game);
-		boxPanelRight.add(tf_name_editor);
-		boxPanelRight.add(cb_listDev);
-		boxPanelRight.add(cb_platform);
-		boxPanelRight.add(cb_type);
-		boxPanelRight.add(tf_date);
-		boxPanelRight.add(tf_url_image);
-		boxPanelRight.add(tf_description);
+		left1.add(lb_name_game);
+		left2.add(lb_name_editor);
+		left3.add(lb_listDev);
+		left4.add(lb_platform);
+		left5.add(lb_type);
+		left6.add(lb_date);
+		left7.add(lb_url_image);
+		left8.add(lb_description);
+		/**/
+		right1.add(tf_name_game);
+		right2.add(tf_name_editor);
+		right3.add(cb_listDev);
+		right4.add(cb_platform);
+		right5.add(cb_type);
+		right6.add(tf_date);
+		right7.add(tf_url_image);
+		right8.add(tf_description);
+		/**/
+		gridPanelText.add(left1);
+		gridPanelText.add(right1);
+		gridPanelText.add(left2);
+		gridPanelText.add(right2);
+		gridPanelText.add(left3);
+		gridPanelText.add(right3);
+		gridPanelText.add(left4);
+		gridPanelText.add(right4);
+		gridPanelText.add(left5);
+		gridPanelText.add(right5);
+		gridPanelText.add(left6);
+		gridPanelText.add(right6);
+		gridPanelText.add(left7);
+		gridPanelText.add(right7);
+		gridPanelText.add(left8);
+		gridPanelText.add(right8);
 
 		// Add buttons
 		gridPanelButton.add(filter);
@@ -185,12 +234,27 @@ public class FormPanelGame extends JPanel implements ActionListener
 		gridPanelButton.add(delete);
 
 		// Pannel background colours
-		this.setBackground(Color.decode("#404040"));
-		this.setBackground(Color.decode("#404040"));
-		containerPanel.setBackground(Color.decode("#404040"));
-		boxPanelLeft.setBackground(Color.decode("#404040"));
-		boxPanelRight.setBackground(Color.decode("#404040"));
-		gridPanelButton.setBackground(Color.decode("#404040"));
+		this.setBackground(Color.decode(TEXT_FIELD));
+		this.setBackground(Color.decode(TEXT_FIELD));
+		containerPanel.setBackground(Color.decode(TEXT_FIELD));
+		left1.setBackground(Color.decode(TEXT_FIELD));
+		left2.setBackground(Color.decode(TEXT_FIELD));
+		left3.setBackground(Color.decode(TEXT_FIELD));
+		left4.setBackground(Color.decode(TEXT_FIELD));
+		left5.setBackground(Color.decode(TEXT_FIELD));
+		left6.setBackground(Color.decode(TEXT_FIELD));
+		left7.setBackground(Color.decode(TEXT_FIELD));
+		left8.setBackground(Color.decode(TEXT_FIELD));
+		right1.setBackground(Color.decode(TEXT_FIELD));
+		right2.setBackground(Color.decode(TEXT_FIELD));
+		right3.setBackground(Color.decode(TEXT_FIELD));
+		right4.setBackground(Color.decode(TEXT_FIELD));
+		right5.setBackground(Color.decode(TEXT_FIELD));
+		right6.setBackground(Color.decode(TEXT_FIELD));
+		right7.setBackground(Color.decode(TEXT_FIELD));
+		right8.setBackground(Color.decode(TEXT_FIELD));
+		gridPanelText.setBackground(Color.decode(TEXT_FIELD));
+		gridPanelButton.setBackground(Color.decode(TEXT_FIELD));
 	}
 
 	private void initListiners()
@@ -202,6 +266,9 @@ public class FormPanelGame extends JPanel implements ActionListener
 		delete.addActionListener(this);
 	}
 
+	/*
+	 * Effectivly the projects controlers are run from the listeners here.
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
@@ -211,11 +278,15 @@ public class FormPanelGame extends JPanel implements ActionListener
 		}
 		else if (e.getSource() == create)
 		{
+			Dialog dia = new Dialog("Hello", "World");
 			if (tf_date.getText().trim().length() != 0)
 			{
 				VerifyRegex check = new VerifyRegex(1, tf_date.getText().toString());
 				if (!check.validate())
 				{
+					showMessageDialog(
+							null, "Incorect date format, please use YYYY-MM-DD",
+							"Format date", ERROR_MESSAGE);
 					System.out.println("Incorect date format");
 				}
 				else
@@ -228,7 +299,9 @@ public class FormPanelGame extends JPanel implements ActionListener
 				VerifyRegex check = new VerifyRegex(2, tf_url_image.getText().toString());
 				if (!check.validate())
 				{
-					System.out.println("Incorect format for URL");
+					showMessageDialog(
+							null, "Incorect format for URL", "Format URL", ERROR_MESSAGE);
+					System.out.println("Incorect data entry format for URL");
 				}
 				else
 				{
@@ -240,6 +313,9 @@ public class FormPanelGame extends JPanel implements ActionListener
 				VerifyRegex check = new VerifyRegex(3, tf_description.getText().toString());
 				if (!check.validate())
 				{
+					showMessageDialog(
+							null, "Description is limited to 1000 characters",
+							"Format description", ERROR_MESSAGE);
 					System.out.println("Description is limited to 1000 characters");
 				}
 				else
@@ -265,6 +341,11 @@ public class FormPanelGame extends JPanel implements ActionListener
 		}
 		else if (e.getSource() == delete)
 		{
+			JOptionPane.showMessageDialog(
+					null, "Are you sure that you want to proceed? \n"
+							+ "the current record will be\npermanantly deleted.",
+					"Carfull", INFORMATION_MESSAGE);
+			System.out.println("Description is limited to 1000 characters");
 		}
 	}
 
