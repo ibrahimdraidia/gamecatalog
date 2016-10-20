@@ -44,12 +44,13 @@ public class MainWindow extends JFrame
 	{
 		testLookAndFeel();
 		super.setTitle("GameCatalog");
-		super.setVisible(true);
 		super.setMinimumSize(new Dimension(1400, 800));
 		super.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		initMenuBar();
 		initObjects();
+
+		super.setVisible(true);
 	}
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -70,8 +71,9 @@ public class MainWindow extends JFrame
 		/*
 		 * Set border panels.
 		 */
-		mainPanel.add(new LogoPanel(), BorderLayout.NORTH);
-		mainPanel.add(new TablePanel(), BorderLayout.CENTER);
+		LogoPanel logoPanel = new LogoPanel();
+		mainPanel.add(logoPanel, BorderLayout.NORTH);
+		mainPanel.add(new TablePanel(logoPanel), BorderLayout.CENTER);
 	}
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

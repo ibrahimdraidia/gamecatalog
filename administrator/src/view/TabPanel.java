@@ -8,6 +8,8 @@ import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.text.View;
+import view.LogoPanel;
 
 /**
  *
@@ -20,9 +22,11 @@ public class TabPanel extends JPanel
 	JTabbedPane tabPanelDev;
 	JTabbedPane tabPanel;
 	JTabbedPane tabPanelDescription;
+	LogoPanel leds;
 
-	public TabPanel()
+	public TabPanel(LogoPanel logopanel)
 	{
+		leds = logopanel;
 		initGamePanel();
 	}
 
@@ -35,11 +39,11 @@ public class TabPanel extends JPanel
 		// Tab panels
 		tabPanelGame = new JTabbedPane();
 		//New pages
-		tabPanelGame.addTab("Game", new FormPanelGame());
-		tabPanelGame.addTab("Editor", new FormPanelEditor());
-		tabPanelGame.addTab("Dev", new FormPanelDev());
-		tabPanelGame.addTab("Platform", new FormPanelPlatform());
-		tabPanelGame.addTab("Description", new FormPanelDescription());
+		tabPanelGame.addTab("Game", new FormPanelGame(leds));
+		tabPanelGame.addTab("Editor", new FormPanelEditor(leds));
+		tabPanelGame.addTab("Dev", new FormPanelDev(leds));
+		tabPanelGame.addTab("Platform", new FormPanelPlatform(leds));
+		tabPanelGame.addTab("Description", new FormPanelDescription(leds));
 		
 		this.add(tabPanelGame);
 	}
