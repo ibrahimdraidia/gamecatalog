@@ -17,14 +17,14 @@ import model.GameTableModel;
  *
  * @author GamyCats
  */
-public class GameTablePanel extends JPanel
+public class TablePanelGame extends JPanel
 {
 	
 	private JTable table;
 	private JScrollPane scrollPane;
-	private LogoPanel leds;
+	private MainLogoPanel leds;
 
-	public GameTablePanel(LogoPanel logoPanel)
+	public TablePanelGame(MainLogoPanel logoPanel)
 	{
 		leds = logoPanel;
 		initObject();

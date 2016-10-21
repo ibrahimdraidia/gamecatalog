@@ -33,6 +33,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 import static javax.swing.JOptionPane.showMessageDialog;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 /**
  *
@@ -93,13 +94,13 @@ public class FormPanelGame extends JPanel implements ActionListener
 	private JButton create;
 	private JButton update;
 	private JButton delete;
-	private LogoPanel leds;
+	private MainLogoPanel leds;
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *	Constructor
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
-	public FormPanelGame(LogoPanel logoPanel)
+	public FormPanelGame(MainLogoPanel logoPanel)
 	{
 		leds = logoPanel;
 		initObjects();

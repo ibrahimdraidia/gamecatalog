@@ -25,14 +25,12 @@ public class MainWindow extends JFrame
 	private final int BORDER = 10;
 	//Panels
 	private JPanel mainPanel;
-	private LogoPanel logoPanel;
-	private TabPanel tabPanel;
-	private GameTablePanel tablePanel;
+	private MainLogoPanel logoPanel;
+	private MainTabPanel tabPanel;
+	private TablePanelGame tablePanel;
 	//MenuBar
 	private JMenuBar menuBar;
-	JMenu menu1,
-			menu2,
-			menu3;
+	private JMenu menu1, menu2, menu3;
 	private JMenuItem connect,
 			disconnect;
 
@@ -72,11 +70,11 @@ public class MainWindow extends JFrame
 		/*
 		 * Set border panels.
 		 */
-		LogoPanel logoPanel = new LogoPanel();
+		MainLogoPanel logoPanel = new MainLogoPanel();
 		mainPanel.add(logoPanel, BorderLayout.NORTH);
 		//CenterPanel.tablePane.add(new TabPanel(new LogoPanel()),BorderLayout.WEST);
 		//CenterPanel.tablePane.add(new GameTablePanel(new LogoPanel()),BorderLayout.CENTER);
-		mainPanel.add(new CenterPanel(), BorderLayout.CENTER);
+		mainPanel.add(new MainCenterPanel(), BorderLayout.CENTER);
 		//mainPanel.add(new GameTablePanel(logoPanel), BorderLayout.CENTER);
 	}
 

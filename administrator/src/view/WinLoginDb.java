@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import javax.swing.*;
-import view.LogoPanel;
+import view.MainLogoPanel;
 import view.Icons;
 
 /**
@@ -39,7 +39,7 @@ public class WinLoginDb extends JDialog implements ActionListener
 	private String pass = "";
 	private String[] wordlist = {"", ""};
 	//private Util util;
-	private LogoPanel leds;
+	private MainLogoPanel leds;
 	private Icons icons;
 
 	/*
@@ -91,7 +91,7 @@ public class WinLoginDb extends JDialog implements ActionListener
 	
 		setTextFieldsFromMemory();
 
-		leds = new LogoPanel();
+		leds = new MainLogoPanel();
 		icons = new Icons();
 	}
 

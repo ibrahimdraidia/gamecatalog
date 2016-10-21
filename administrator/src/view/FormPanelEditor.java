@@ -19,7 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
-import view.TabPanel;
+import view.MainTabPanel;
 
 /**
  *
@@ -58,13 +58,13 @@ public class FormPanelEditor extends JPanel implements ActionListener
 	private JButton create;
 	private JButton update;
 	private JButton delete;
-	private LogoPanel leds;
+	private MainLogoPanel leds;
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *	Constructor
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
-	public FormPanelEditor(LogoPanel logoPanel)
+	public FormPanelEditor(MainLogoPanel logoPanel)
 	{
 		leds = logoPanel;
 		initObjects();
@@ -210,7 +210,7 @@ public class FormPanelEditor extends JPanel implements ActionListener
 			//Parse hashtable into handeler class.
 			new EditorHandler().add(createEditorMap);
                         
-                        TabPanel.editorRefresh();
+                        MainTabPanel.editorRefresh();
                         
 		}
 		else if (e.getSource() == update)
@@ -221,7 +221,7 @@ public class FormPanelEditor extends JPanel implements ActionListener
 			//Parse hashtable into handeler class.
 			new EditorHandler().add(createEditorMap);
                         
-                        TabPanel.editorRefresh();
+                        MainTabPanel.editorRefresh();
 		}
 		else if (e.getSource() == delete)
 		{

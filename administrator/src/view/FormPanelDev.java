@@ -56,13 +56,13 @@ public class FormPanelDev extends JPanel implements ActionListener
 	private JButton create;
 	private JButton update;
 	private JButton delete;
-	private LogoPanel leds;
+	private MainLogoPanel leds;
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *	Constructor
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
-	public FormPanelDev(LogoPanel logoPanel)
+	public FormPanelDev(MainLogoPanel logoPanel)
 	{
 		leds = logoPanel;
 		initObjects();
@@ -203,7 +203,7 @@ public class FormPanelDev extends JPanel implements ActionListener
 			//Parse
 			new DeveloperHandler().add(createDeveloperMap);
                         
-                        TabPanel.devRefresh();
+                        MainTabPanel.devRefresh();
 		}
 		else if (e.getSource() == update)
 		{
@@ -213,7 +213,7 @@ public class FormPanelDev extends JPanel implements ActionListener
 			//Parse
 			new DeveloperHandler().add(createDeveloperMap);
                         
-                        TabPanel.devRefresh();
+                        MainTabPanel.devRefresh();
 		}
 		else if (e.getSource() == delete)
 		{

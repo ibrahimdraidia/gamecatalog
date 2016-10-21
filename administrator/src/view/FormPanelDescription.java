@@ -22,6 +22,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.TitledBorder;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 /**
  *
@@ -43,13 +44,13 @@ public class FormPanelDescription extends JPanel implements ActionListener
 	private JButton create;
 	private JButton update;
 	private JButton delete;
-	private LogoPanel leds;
+	private MainLogoPanel leds;
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *	Constructor
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
-	public FormPanelDescription(LogoPanel logoPanel)
+	public FormPanelDescription(MainLogoPanel logoPanel)
 	{
 		leds = logoPanel;
 		initObjects();

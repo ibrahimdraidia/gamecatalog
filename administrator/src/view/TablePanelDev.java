@@ -18,17 +18,17 @@ import javax.swing.JScrollPane;
  *
  * @author Nicolas
  */
-public class DevTablePanel extends JPanel
+public class TablePanelDev extends JPanel
 {
 	
 	//private JTable table;
 	private JScrollPane scrollPane;
-	private LogoPanel leds;
+	private MainLogoPanel leds;
         
         private JList devJList;
         private DefaultListModel listModel;
 
-	public DevTablePanel(LogoPanel logoPanel)
+	public TablePanelDev(MainLogoPanel logoPanel)
 	{
 		leds = logoPanel;
 		initObject();

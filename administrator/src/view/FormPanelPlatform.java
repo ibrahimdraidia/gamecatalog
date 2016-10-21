@@ -56,13 +56,13 @@ public class FormPanelPlatform extends JPanel implements ActionListener
 	private JButton create;
 	private JButton update;
 	private JButton delete;
-	private LogoPanel leds;
+	private MainLogoPanel leds;
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *	Constructor
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
-	public FormPanelPlatform(LogoPanel logoPanel)
+	public FormPanelPlatform(MainLogoPanel logoPanel)
 	{
 		leds = logoPanel;
 		initObjects();
@@ -205,7 +205,7 @@ public class FormPanelPlatform extends JPanel implements ActionListener
 			//Parse 
 			new PlatformHandler().add(createPlatformMap);
                         
-                        TabPanel.platformRefresh();
+                        MainTabPanel.platformRefresh();
 		}
 		else if (e.getSource() == update)
 		{
@@ -215,7 +215,7 @@ public class FormPanelPlatform extends JPanel implements ActionListener
 			//Parse 
 			new PlatformHandler().add(createPlatformMap);
                         
-                        TabPanel.platformRefresh();
+                        MainTabPanel.platformRefresh();
 		}
 		else if (e.getSource() == delete)
 		{

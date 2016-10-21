@@ -11,22 +11,22 @@ import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.text.View;
-import view.LogoPanel;
+import view.MainLogoPanel;
 
 /**
  *
  * @author GamyCats
  */
-public class TabPanel extends JPanel
+public class MainTabPanel extends JPanel
 {
 	JTabbedPane tabPanelGame;
 	JTabbedPane tabPanelEditor;
 	JTabbedPane tabPanelDev;
 	JTabbedPane tabPanel;
 	JTabbedPane tabPanelDescription;
-	LogoPanel leds;
+	MainLogoPanel leds;
 
-	public TabPanel(LogoPanel logopanel)
+	public MainTabPanel(MainLogoPanel logopanel)
 	{
 		leds = logopanel;
 		initGamePanel();
@@ -56,23 +56,23 @@ public class TabPanel extends JPanel
 			
 				switch (tabPanelGame.getSelectedIndex()) {
 				case 0:
-					CenterPanel.tablePane.removeAll();
-					CenterPanel.tablePane.add(new GameTablePanel(new LogoPanel()), BorderLayout.CENTER);
-					CenterPanel.tablePane.revalidate();
+					MainCenterPanel.tablePane.removeAll();
+					MainCenterPanel.tablePane.add(new TablePanelGame(new MainLogoPanel()), BorderLayout.CENTER);
+					MainCenterPanel.tablePane.revalidate();
 					break;
 				case 1:
-					CenterPanel.tablePane.removeAll();
-					CenterPanel.tablePane.add(new EditorTablePanel(new LogoPanel()), BorderLayout.CENTER);
-					CenterPanel.tablePane.revalidate();
+					MainCenterPanel.tablePane.removeAll();
+					MainCenterPanel.tablePane.add(new TablePanelEditor(new MainLogoPanel()), BorderLayout.CENTER);
+					MainCenterPanel.tablePane.revalidate();
 					break;
 				case 2:
-                                        CenterPanel.tablePane.removeAll();
-					CenterPanel.tablePane.add(new DevTablePanel(new LogoPanel()), BorderLayout.CENTER);
-					CenterPanel.tablePane.revalidate();
+                                        MainCenterPanel.tablePane.removeAll();
+					MainCenterPanel.tablePane.add(new TablePanelDev(new MainLogoPanel()), BorderLayout.CENTER);
+					MainCenterPanel.tablePane.revalidate();
                                         break;
-				case 3: CenterPanel.tablePane.removeAll();
-					CenterPanel.tablePane.add(new PlatformTablePanel(new LogoPanel()), BorderLayout.CENTER);
-					CenterPanel.tablePane.revalidate();
+				case 3: MainCenterPanel.tablePane.removeAll();
+					MainCenterPanel.tablePane.add(new TablePanelPlatform(new MainLogoPanel()), BorderLayout.CENTER);
+					MainCenterPanel.tablePane.revalidate();
                                         break;
 				case 4: break;
 
@@ -85,20 +85,20 @@ public class TabPanel extends JPanel
 	}
         
         public static void editorRefresh(){
-                CenterPanel.tablePane.removeAll();
-                CenterPanel.tablePane.add(new EditorTablePanel(new LogoPanel()), BorderLayout.CENTER);
-                CenterPanel.tablePane.revalidate();
+                MainCenterPanel.tablePane.removeAll();
+                MainCenterPanel.tablePane.add(new TablePanelEditor(new MainLogoPanel()), BorderLayout.CENTER);
+                MainCenterPanel.tablePane.revalidate();
         }
         
         public static void devRefresh(){
-                CenterPanel.tablePane.removeAll();
-                CenterPanel.tablePane.add(new DevTablePanel(new LogoPanel()), BorderLayout.CENTER);
-                CenterPanel.tablePane.revalidate();
+                MainCenterPanel.tablePane.removeAll();
+                MainCenterPanel.tablePane.add(new TablePanelDev(new MainLogoPanel()), BorderLayout.CENTER);
+                MainCenterPanel.tablePane.revalidate();
         }
         
         public static void platformRefresh(){
-                CenterPanel.tablePane.removeAll();
-                CenterPanel.tablePane.add(new PlatformTablePanel(new LogoPanel()), BorderLayout.CENTER);
-                CenterPanel.tablePane.revalidate();
+                MainCenterPanel.tablePane.removeAll();
+                MainCenterPanel.tablePane.add(new TablePanelPlatform(new MainLogoPanel()), BorderLayout.CENTER);
+                MainCenterPanel.tablePane.revalidate();
         }
 }

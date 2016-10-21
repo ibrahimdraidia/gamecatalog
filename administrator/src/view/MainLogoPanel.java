@@ -14,7 +14,7 @@ import javax.swing.JPanel;
  *
  * @author GamyCats
  */
-public class LogoPanel extends JPanel
+public class MainLogoPanel extends JPanel
 {
 	public boolean isConnected;
 	private JPanel flowRight;
@@ -23,7 +23,7 @@ public class LogoPanel extends JPanel
 	private JLabel redLed;
 	private Icons icons;
 
-	public LogoPanel()
+	public MainLogoPanel()
 	{
 		initObjects();
 	}
