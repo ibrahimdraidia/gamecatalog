@@ -19,7 +19,7 @@ public class Database
 	
 	public Database()
 	{
-		_isRemote = true;
+		_isRemote = false;
 		if(_isRemote)
 		{
 			_dbhost = "ibrahimdraidia.com";
