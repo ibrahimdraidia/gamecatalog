@@ -374,7 +374,16 @@ public class FormPanelGame extends JPanel implements ActionListener
 		}
 		else if (e.getSource() == create)
 		{
-			if (tf_date.getText().trim().length() != 0)
+			if (tf_name_game.getText().trim().length() == 0)
+			{
+				leds.setLedAlert();
+				showMessageDialog(
+						null, "You must provide a name\nfor each new record",
+						"Format date", ERROR_MESSAGE);
+				System.out.println("Incorect date format");
+				leds.setLedNormal();
+			}
+			else if (tf_date.getText().trim().length() != 0)
 			{
 				// Check date before write ...
 				VerifyRegex check = new VerifyRegex(1, tf_date.getText().toString());
@@ -433,7 +442,16 @@ public class FormPanelGame extends JPanel implements ActionListener
 		}
 		else if (e.getSource() == update)
 		{
-			if (tf_date.getText().trim().length() != 0)
+			if (tf_name_game.getText().trim().length() == 0)
+			{
+				leds.setLedAlert();
+				showMessageDialog(
+						null, "You must provide a name\nfor this record",
+						"Format date", ERROR_MESSAGE);
+				System.out.println("Incorect date format");
+				leds.setLedNormal();
+			}
+			else if (tf_date.getText().trim().length() != 0)
 			{
 				VerifyRegex check = new VerifyRegex(1, tf_date.getText().toString());
 				if (!check.validate())
@@ -501,7 +519,8 @@ public class FormPanelGame extends JPanel implements ActionListener
 
 			n = JOptionPane.showOptionDialog(FormPanelGame.this,
 					"Are you sure that you want to proceed? \n"
-							+ "the current record will be\npermanantly deleted.",
+							+ "the current record will be\npermanantly deleted,\n"
+							+ "note that related records will not be effected.",
 					"Carfull",
 					JOptionPane.YES_NO_CANCEL_OPTION,
 					JOptionPane.QUESTION_MESSAGE,

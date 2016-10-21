@@ -1,5 +1,5 @@
 /*
- * Main page view for the gamycatalog.
+ * MainWindow view for the gamycatalog.
  */
 package view;
 
@@ -45,7 +45,7 @@ public class MainWindow extends JFrame
 		super.setMinimumSize(new Dimension(1400, 800));
 		super.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-		initMenuBar();
+		//initMenuBar();
 		initObjects();
 
 		super.setVisible(true);
@@ -60,7 +60,6 @@ public class MainWindow extends JFrame
 		/*
 		 * The main window, principal BorderLayout and spacing.
 		 */
-		
 		mainPanel = (JPanel) this.getContentPane();
 		mainPanel.setBackground(Color.decode("#222222"));
 		mainPanel.setBorder(
@@ -72,10 +71,7 @@ public class MainWindow extends JFrame
 		 */
 		MainLogoPanel logoPanel = new MainLogoPanel();
 		mainPanel.add(logoPanel, BorderLayout.NORTH);
-		//CenterPanel.tablePane.add(new TabPanel(new LogoPanel()),BorderLayout.WEST);
-		//CenterPanel.tablePane.add(new GameTablePanel(new LogoPanel()),BorderLayout.CENTER);
 		mainPanel.add(new MainCenterPanel(logoPanel), BorderLayout.CENTER);
-		//mainPanel.add(new GameTablePanel(logoPanel), BorderLayout.CENTER);
 	}
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -105,7 +101,6 @@ public class MainWindow extends JFrame
 		menu2.add(disconnect);
 
 		// MenuBar background color.
-		//menuBar.setBackground(Color.decode("#252525"));
 		this.setJMenuBar(menuBar);
 	}
 
