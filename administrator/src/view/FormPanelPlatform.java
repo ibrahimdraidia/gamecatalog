@@ -204,6 +204,8 @@ public class FormPanelPlatform extends JPanel implements ActionListener
 			createPlatformMap.put("name_platform", tf_platform.getText().toString());
 			//Parse 
 			new PlatformHandler().add(createPlatformMap);
+                        
+                        TabPanel.platformRefresh();
 		}
 		else if (e.getSource() == update)
 		{
@@ -212,6 +214,8 @@ public class FormPanelPlatform extends JPanel implements ActionListener
 			createPlatformMap.put("name_platform", tf_platform.getText().toString());
 			//Parse 
 			new PlatformHandler().add(createPlatformMap);
+                        
+                        TabPanel.platformRefresh();
 		}
 		else if (e.getSource() == delete)
 		{
