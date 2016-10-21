@@ -28,11 +28,7 @@ public class MainWindow extends JFrame
 	private MainLogoPanel logoPanel;
 	private MainTabPanel tabPanel;
 	private TablePanelGame tablePanel;
-	//MenuBar
-	private JMenuBar menuBar;
-	private JMenu menu1, menu2, menu3;
-	private JMenuItem connect,
-			disconnect;
+	
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *	Constructor
@@ -45,7 +41,6 @@ public class MainWindow extends JFrame
 		super.setMinimumSize(new Dimension(1400, 800));
 		super.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-		//initMenuBar();
 		initObjects();
 
 		super.setVisible(true);
@@ -74,35 +69,7 @@ public class MainWindow extends JFrame
 		mainPanel.add(new MainCenterPanel(logoPanel), BorderLayout.CENTER);
 	}
 
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- *	Menubar
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- */
-	private void initMenuBar()
-	{
-		/*
-		 * The menu bar.
-		 */
-		menuBar = new JMenuBar();
-		/**/
-		menu1 = new JMenu("page");
-		menu2 = new JMenu("db");
-		menu3 = new JMenu("info");
-		/**/
-		menuBar.add(menu1);
-		menuBar.add(menu2);
-		menuBar.add(menu3);
 
-		// Items within the menubar ...
-		connect = new JMenuItem("Connect");
-		disconnect = new JMenuItem("Disconnect");
-		/**/
-		menu2.add(connect);
-		menu2.add(disconnect);
-
-		// MenuBar background color.
-		this.setJMenuBar(menuBar);
-	}
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *	Misc

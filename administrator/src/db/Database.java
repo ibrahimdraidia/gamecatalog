@@ -33,7 +33,7 @@ public class Database
 			_dbhost = "localhost";
 			_dbname = "gamecatalog";
 			_username = "root";
-			_password = "pass";
+			_password = "";
 			_url = "jdbc:mysql://"+_dbhost+"/"+_dbname+"?useSSL=false";
 		}
 		

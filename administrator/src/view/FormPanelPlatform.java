@@ -10,6 +10,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.BorderFactory;
@@ -50,13 +51,15 @@ public class FormPanelPlatform extends JPanel implements ActionListener
 	private JPanel gridPanelButton;
 	//Platform
 	private JLabel     lb_platform;
-	private JTextField tf_platform;
+	public static  JTextField tf_platform;
 	//Buttons
 	private JButton filter;
 	private JButton create;
 	private JButton update;
 	private JButton delete;
 	private MainLogoPanel leds;
+	
+	
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *	Constructor
@@ -151,8 +154,6 @@ public class FormPanelPlatform extends JPanel implements ActionListener
 		gridPanelText.add(left8);
 		gridPanelText.add(right8);
 
-		// Add buttons
-		gridPanelButton.add(filter);
 		gridPanelButton.add(create);
 		gridPanelButton.add(update);
 		gridPanelButton.add(delete);
@@ -211,15 +212,20 @@ public class FormPanelPlatform extends JPanel implements ActionListener
 		{
 			//Put values from text fields and parse into hash table.
 			Map<String, Object> createPlatformMap = new HashMap<String, Object>();
+			ArrayList<Integer> listID = new ArrayList<>();
+			listID.add(TablePanelPlatform.id_platform);
 			createPlatformMap.put("name_platform", tf_platform.getText().toString());
 			//Parse 
-			new PlatformHandler().add(createPlatformMap);
+			new PlatformHandler().update(listID,createPlatformMap);
                         
-                        MainTabPanel.platformRefresh();
+            MainTabPanel.platformRefresh();
 		}
 		else if (e.getSource() == delete)
 		{
-
+			ArrayList<Integer> listID = new ArrayList<>();
+			listID.add(TablePanelPlatform.id_platform);
+			new PlatformHandler().remove(listID);
+            MainTabPanel.platformRefresh();
 		}
 	}
 }

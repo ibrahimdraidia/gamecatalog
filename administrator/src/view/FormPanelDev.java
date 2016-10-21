@@ -10,6 +10,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.BorderFactory;
@@ -50,7 +51,8 @@ public class FormPanelDev extends JPanel implements ActionListener
 	private JPanel gridPanelButton;
 	//Developer
 	private JLabel     lb_listDev;
-	private JTextField tf_listDev;
+	public static JTextField tf_listDev = new JTextField();
+	
 	//Buttons
 	private JButton filter;
 	private JButton create;
@@ -111,8 +113,7 @@ public class FormPanelDev extends JPanel implements ActionListener
 		lb_listDev.setForeground(Color.decode(TEXT_COLOUR));
 
 		//Instantiate Text fields and combo boxes
-		tf_listDev = new JTextField();
-		tf_listDev.setColumns(TEXT_FIELD_WIDTH);
+		
 
 		//Buttons
 		filter = new JButton("filter");
@@ -149,8 +150,7 @@ public class FormPanelDev extends JPanel implements ActionListener
 		gridPanelText.add(left8);
 		gridPanelText.add(right8);
 
-		// Add buttons
-		gridPanelButton.add(filter);
+		
 		gridPanelButton.add(create);
 		gridPanelButton.add(update);
 		gridPanelButton.add(delete);
@@ -181,8 +181,7 @@ public class FormPanelDev extends JPanel implements ActionListener
 
 	private void initListiners()
 	{
-		// Listeners
-		filter.addActionListener(this);
+		
 		create.addActionListener(this);
 		update.addActionListener(this);
 		delete.addActionListener(this);
@@ -209,15 +208,20 @@ public class FormPanelDev extends JPanel implements ActionListener
 		{
 			//Put values from text fields and parse into hash table.
 			Map<String, Object> createDeveloperMap = new HashMap<String, Object>();
+			ArrayList<Integer> listID = new ArrayList<>();
+			listID.add(TablePanelDev.id_developer);
 			createDeveloperMap.put("name_dev", tf_listDev.getText().toString());
 			//Parse
-			new DeveloperHandler().add(createDeveloperMap);
+			new DeveloperHandler().update(listID,createDeveloperMap);
                         
-                        MainTabPanel.devRefresh();
+           MainTabPanel.devRefresh();
 		}
 		else if (e.getSource() == delete)
 		{
-
+			ArrayList<Integer> listID = new ArrayList<>();
+			listID.add(TablePanelDev.id_developer);
+			new DeveloperHandler().remove(listID);
+		    MainTabPanel.devRefresh();
 		}
 	}
 }

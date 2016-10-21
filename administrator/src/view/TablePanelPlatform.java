@@ -15,6 +15,8 @@ import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 /**
  *
@@ -27,8 +29,11 @@ public class TablePanelPlatform extends JPanel
 	private JScrollPane scrollPane;
 	private MainLogoPanel leds;
         
-        private JList platformJList;
-        private DefaultListModel listModel;
+    private JList platformJList;
+    private DefaultListModel listModel;
+    
+ // entity id's
+ 	public static int id_platform = 0;
 
 	public TablePanelPlatform(MainLogoPanel logoPanel)
 	{
@@ -57,7 +62,14 @@ public class TablePanelPlatform extends JPanel
 		}
                 
                 platformJList = new JList(listModel);
-                
+                platformJList.addListSelectionListener(new ListSelectionListener() {
+					
+					@Override
+					public void valueChanged(ListSelectionEvent e) {
+						FormPanelPlatform.tf_platform.setText(platformJList.getSelectedValue().toString());
+						id_platform = listPlatform.get(platformJList.getSelectedIndex()).getId_platform();
+					}
+				});
                 scrollPane = new JScrollPane(platformJList);
 		
 		this.add(scrollPane, BorderLayout.CENTER);

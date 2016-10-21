@@ -10,6 +10,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.BorderFactory;
@@ -52,7 +53,7 @@ public class FormPanelEditor extends JPanel implements ActionListener
 	private JPanel gridPanelButton;
 	//Editor
 	private JLabel     lb_name_editor;
-	private JTextField tf_name_editor;
+	public static  JTextField tf_name_editor;
 	//Buttons
 	private JButton filter;
 	private JButton create;
@@ -153,8 +154,7 @@ public class FormPanelEditor extends JPanel implements ActionListener
 		gridPanelText.add(left8);
 		gridPanelText.add(right8);
 
-		// Add buttons
-		gridPanelButton.add(filter);
+		
 		gridPanelButton.add(create);
 		gridPanelButton.add(update);
 		gridPanelButton.add(delete);
@@ -209,22 +209,27 @@ public class FormPanelEditor extends JPanel implements ActionListener
 			createEditorMap.put("name_editor", tf_name_editor.getText().toString());
 			//Parse hashtable into handeler class.
 			new EditorHandler().add(createEditorMap);
-                        
-                        MainTabPanel.editorRefresh();
+            MainTabPanel.editorRefresh();
                         
 		}
 		else if (e.getSource() == update)
 		{
 			//Put values from text fields and parse into hash table.
 			Map<String, Object> createEditorMap = new HashMap<String, Object>();
+			ArrayList<Integer> listID = new ArrayList<>();
+			listID.add(TablePanelEditor.id_editor);
 			createEditorMap.put("name_editor", tf_name_editor.getText().toString());
+			
 			//Parse hashtable into handeler class.
-			new EditorHandler().add(createEditorMap);
-                        
-                        MainTabPanel.editorRefresh();
+			new EditorHandler().update(listID,createEditorMap);
+            MainTabPanel.editorRefresh();
 		}
 		else if (e.getSource() == delete)
 		{
+			ArrayList<Integer> listID = new ArrayList<>();
+			listID.add(TablePanelEditor.id_editor);
+			new EditorHandler().remove(listID);
+            MainTabPanel.editorRefresh();
 		}
 	}
 }
