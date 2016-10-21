@@ -95,6 +95,12 @@ public class FormPanelGame extends JPanel implements ActionListener
 	private JButton update;
 	private JButton delete;
 	private MainLogoPanel leds;
+	
+	// Entity ID's
+	private int id_editor = 0;
+	private int id_developer = 0;
+	private int id_platfom = 0;
+	private int id_type = 0;
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *	Constructor
@@ -318,8 +324,7 @@ public class FormPanelGame extends JPanel implements ActionListener
 		gridPanelText.add(left8);
 		gridPanelText.add(right8);
 
-		// Add buttons
-		gridPanelButton.add(filter);
+		
 		gridPanelButton.add(create);
 		gridPanelButton.add(update);
 		gridPanelButton.add(delete);
@@ -520,19 +525,23 @@ public class FormPanelGame extends JPanel implements ActionListener
 		//COmboBoxes
 		else if (e.getSource() == cb_name_editor)
 		{
-
+			Editor editor = (Editor)cb_name_editor.getSelectedItem();
+			id_editor = editor.getId_editor();
 		}
 		else if (e.getSource() == cb_listDev)
 		{
-
+			Developer developer = (Developer)cb_listDev.getSelectedItem();
+			id_developer = developer.getId_developer();
 		}
 		else if (e.getSource() == cb_platform)
 		{
-
+			Platform platform = (Platform)cb_platform.getSelectedItem();
+			id_editor = platform.getId_platform();
 		}
 		else if (e.getSource() == cb_type)
 		{
-
+			Type type = (Type)cb_type.getSelectedItem();
+			id_type = type.getId_type();
 		}
 	}
 
@@ -546,6 +555,10 @@ public class FormPanelGame extends JPanel implements ActionListener
 			createGameMap.put("release_date", "1990-11-21");
 			createGameMap.put("pic_game", tf_url_image.getText().toString());
 			createGameMap.put("summary_game", tf_description.getText().toString());
+			createGameMap.put("id_editor", id_editor);
+			createGameMap.put("id_developer", id_developer);
+			createGameMap.put("id_platform", id_platfom);
+			createGameMap.put("id_type", id_type);
 			//Parse 
 			new GameHandler().add(createGameMap);
 		}

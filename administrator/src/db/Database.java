@@ -19,7 +19,7 @@ public class Database
 	
 	public Database()
 	{
-		_isRemote = true;
+		_isRemote = false;
 		if(_isRemote)
 		{
 			_dbhost = "ibrahimdraidia.com";
@@ -33,7 +33,7 @@ public class Database
 			_dbhost = "localhost";
 			_dbname = "gamecatalog";
 			_username = "root";
-			_password = "pass";
+			_password = "";
 			_url = "jdbc:mysql://"+_dbhost+"/"+_dbname+"?useSSL=false";
 		}
 		

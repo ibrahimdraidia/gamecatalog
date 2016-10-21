@@ -25,14 +25,15 @@ public class GameHandler extends Database implements CrudInterface{
 	private Connection _connection;
 	private PreparedStatement _ps;
 	private ResultSet _rs;
-        private Game _game;
+	private Statement _s;
+    private Game _game;
 	
 	/*
 	 * Principle database connection.
 	 */
 	public GameHandler() {
 		_connection = getInstance();
-                _game = new Game();
+        _game = new Game();
 	}
 
 	/*
@@ -115,8 +116,44 @@ public class GameHandler extends Database implements CrudInterface{
 
 	@Override
 	public ArrayList<?> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		// temp arrayList
+				ArrayList<Game> tempList = new ArrayList<>();
+		                
+				
+				try {
+					_s = _connection.createStatement();
+
+					//if(_s.execute("SELECT NAME_GAME, DEV_NAME FROM GAME, DEVELOPS, EDITS, OF_THE_GENRE, ON_THE_PLATFORM, EDITOR, DEVELOPER, PLATFORM GENRE WHERE GAME.ID_GAME = DEVELOPS.ID_GAME AND GAME.ID_GAME = EDITS.ID_GAME AND GAME.ID_GAME = ON_THE_PLATFORM.ID_GAME AND GAME.ID_GAME = OF_THE_GENRE.ID_GAME AND  "))
+		                        if(_s.execute("SELECT name_game, name_dev, name_editor, name_platform, name_genre FROM GAME, DEVELOPS, GENRE, EDITS, OF_THE_GENRE, ON_THE_PLATFORM, EDITOR, DEVELOPER, PLATFORM WHERE GAME.ID_GAME=DEVELOPS.ID_GAME AND DEVELOPS.id_dev=DEVELOPER.id_dev AND GAME.ID_GAME=EDITS.ID_GAME AND EDITS.id_editor=EDITOR.id_editor AND GAME.ID_GAME=ON_THE_PLATFORM.ID_GAME AND ON_THE_PLATFORM.id_platform=PLATFORM.id_platform AND GAME.ID_GAME=OF_THE_GENRE.ID_GAME AND OF_THE_GENRE.id_genre=GENRE.id_genre;"))
+
+		                        {
+						// temp platform obj
+						Game temp;
+						
+						// get result
+						_rs = _s.getResultSet();
+						
+						while(_rs.next())
+						{
+							temp = new Game();
+							//temp.setId_game(_rs.getInt("ID_GAME"));
+							temp.setNom_game(_rs.getString("NAME_GAME"));
+                            temp.setEditor_name(_rs.getString("NAME_EDITOR"));
+                            temp.setDeveloper_name(_rs.getString("NAME_DEV"));
+                            temp.setName_platform(_rs.getString("NAME_PLATFORM"));
+                            temp.set_name_type(_rs.getString("NAME_GENRE"));
+                            
+                            tempList.add(temp);				
+		                                        
+		                                      
+						}
+						
+					}
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				return tempList;
 	}
 
 	

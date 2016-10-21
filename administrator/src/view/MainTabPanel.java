@@ -45,7 +45,6 @@ public class MainTabPanel extends JPanel
 		tabPanelGame.addTab("Editor", new FormPanelEditor(leds));
 		tabPanelGame.addTab("Dev", new FormPanelDev(leds));
 		tabPanelGame.addTab("Platform", new FormPanelPlatform(leds));
-		tabPanelGame.addTab("Description", new FormPanelDescription(leds));
 		
 		this.add(tabPanelGame);
 		

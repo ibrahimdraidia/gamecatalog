@@ -13,6 +13,8 @@ import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 /**
  *
@@ -25,9 +27,13 @@ public class TablePanelDev extends JPanel
 	private JScrollPane scrollPane;
 	private MainLogoPanel leds;
         
-        private JList devJList;
-        private DefaultListModel listModel;
-
+    private JList devJList;
+    private DefaultListModel listModel;
+    
+    // Entity ID's
+ 	
+ 	public static int id_developer = 0;
+ 	
 	public TablePanelDev(MainLogoPanel logoPanel)
 	{
 		leds = logoPanel;
@@ -55,6 +61,14 @@ public class TablePanelDev extends JPanel
 		}
                 
                 devJList = new JList(listModel);
+                devJList.addListSelectionListener(new ListSelectionListener() {
+					
+					@Override
+					public void valueChanged(ListSelectionEvent e) {
+						FormPanelDev.tf_listDev.setText(devJList.getSelectedValue().toString());
+						id_developer =  listDev.get(devJList.getSelectedIndex()).getId_developer();
+					}
+				});
                 
                 scrollPane = new JScrollPane(devJList);
 		
