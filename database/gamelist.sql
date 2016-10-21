@@ -3,8 +3,8 @@
 /* Date de création :  17/10/2016 11:16:39                      */
 /*==============================================================*/
 
-CREATE DATABASE IF NOT EXISTS `gamecatalog` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `gamecatalog`;
+CREATE DATABASE IF NOT EXISTS `draidia2_gamecatalog` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `draidia2_gamecatalog`;
 
 
 /*==============================================================*/
@@ -187,7 +187,7 @@ INSERT INTO `GAME` (`ID_GAME`, `NAME_GAME`, `RELEASE_DATE`, `PIC_GAME`, `SUMMARY
 (5, 'Beatbuddy : Tale of the Guardians', '2013-08-06', null, 'Beatbuddy : Tale of the Guardians est un jeu d\'aventure musical. Le joueur y incarne Beatbuddy, une entité immortelle partie sauver ses amis du prince Maestro à travers six niveaux peints à la main et aux ambiances musicales réalisées par des musiciens tels qu\'Austin Wintory ou La Rochelle Band.'),
 (6, 'Mario Party : Star Rush', '2016-10-07', null, 'Mario Party : Star Rush est un party-game, spin-off de la série des Mario Party, sur 3DS. Vous pourrez jouer avec de nombreux personnages de la license, plus ou moins connus comme Toadette, Harmonie, Wario, Waluigi ... De nombreux amiibos seront également disponible, issus de ce jeu.'),
 (7, 'Gears of War 4', '2016-10-11', null, 'Gears of War 4 est un jeu d\'action sur Xbox One. Gears of War 4, qui reprend les acquis de la franchise. L\'histoire se déroulera vingt-cinq ans après les événements du troisième épisode. Suite à l\'utilisation du Rayon de l\'Aube, tous les carburants fossiles de la planète ont été détruits et l\'humanité court un grave danger. Les quatre types de météo auront un impact important sur le déroulement des combats. Pendant la forte bise voleront arbres, feuilles, poussière et de nombreuses autres choses.'),
-(8, 'Final Fantasy XV', '2016-11-29', null, 'Anciennement nommé Final Fantasy XIII Versus, Final Fantasy XV est un J-RPG de la célèbre série Final Fantasy. Le joueur y incarne Noctis, héritier du roi, accompagné de ses amis, dans un monde moderne, sombre, et fantastique.'),
+(8, 'Final Fantasy XV', '2016-11-29', null ,'Anciennement nommé Final Fantasy XIII Versus, Final Fantasy XV est un J-RPG de la célèbre série Final Fantasy. Le joueur y incarne Noctis, héritier du roi, accompagné de ses amis, dans un monde moderne, sombre, et fantastique.'),
 (9, 'The Legend of Zelda : Breath of the Wild', '2017-03-01', null, 'Annoncé pour 2015, The Legend of Zelda Wii U est un jeu d\'aventure qui promet d\'être différent de ses prédécesseurs et de se rapprocher de l\'organisation du premier opus de la série. Celui-ci se déroulera dans un monde vaste et ouvert avec des donjons sans ordre imposé.'),
 (10, 'Mass Effect Andromeda', '2017-03-21', null, 'Quatrième opus de la saga du même nom, Mass Effect 4 est un jeu de rôle intergalactique reposant sur l\'exploration et la gestion des relations entre les peuples. Le joueur pourra en effet découvrir un vaste ensemble de planètes, et choisir la façon dont il traite les gens qu\'il rencontre et ses coéquipiers.'),
 (11, 'Tekken 7', '2017-01-01', null, 'Tekken 7 est le septième épisode de la série de jeux de combat éponyme. Cet épisode comprend d\'anciens personnages de la série, mais également de nouvelles têtes telles que Katarina, Claudio et d\'autres encore...'),

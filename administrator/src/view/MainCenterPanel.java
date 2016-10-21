@@ -7,12 +7,13 @@ import javax.swing.JPanel;
 public class MainCenterPanel extends JPanel {
 
 	public static  JPanel tablePane = new JPanel(new BorderLayout());
+	public static MainLogoPanel logoPanel;
 	
-	public MainCenterPanel()
+	public MainCenterPanel(MainLogoPanel logoPanel)
 	{
 		setLayout(new BorderLayout());
-		add(new MainTabPanel(null),BorderLayout.WEST);
-		MainCenterPanel.tablePane.add(new TablePanelGame(null),BorderLayout.CENTER);
-		add(MainCenterPanel.tablePane,BorderLayout.CENTER);
+		this.add(new MainTabPanel(logoPanel),BorderLayout.WEST);
+		MainCenterPanel.tablePane.add(new TablePanelGame(logoPanel),BorderLayout.CENTER);
+		this.add(MainCenterPanel.tablePane,BorderLayout.CENTER);
 	}
 }
