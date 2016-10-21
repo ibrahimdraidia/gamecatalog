@@ -379,8 +379,8 @@ public class FormPanelGame extends JPanel implements ActionListener
 				leds.setLedAlert();
 				showMessageDialog(
 						null, "You must provide a name\nfor each new record",
-						"Format date", ERROR_MESSAGE);
-				System.out.println("Incorect date format");
+						"Format name", ERROR_MESSAGE);
+				System.out.println("Record name null.");
 				leds.setLedNormal();
 			}
 			else if (tf_date.getText().trim().length() != 0)
@@ -446,9 +446,9 @@ public class FormPanelGame extends JPanel implements ActionListener
 			{
 				leds.setLedAlert();
 				showMessageDialog(
-						null, "You must provide a name\nfor this record",
-						"Format date", ERROR_MESSAGE);
-				System.out.println("Incorect date format");
+						null, "You must provide a name\nfor each new record",
+						"Format name", ERROR_MESSAGE);
+				System.out.println("Record name null.");
 				leds.setLedNormal();
 			}
 			else if (tf_date.getText().trim().length() != 0)
