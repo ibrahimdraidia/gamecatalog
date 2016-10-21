@@ -202,6 +202,8 @@ public class FormPanelDev extends JPanel implements ActionListener
 			createDeveloperMap.put("name_dev", tf_listDev.getText().toString());
 			//Parse
 			new DeveloperHandler().add(createDeveloperMap);
+                        
+                        TabPanel.devRefresh();
 		}
 		else if (e.getSource() == update)
 		{
@@ -210,6 +212,8 @@ public class FormPanelDev extends JPanel implements ActionListener
 			createDeveloperMap.put("name_dev", tf_listDev.getText().toString());
 			//Parse
 			new DeveloperHandler().add(createDeveloperMap);
+                        
+                        TabPanel.devRefresh();
 		}
 		else if (e.getSource() == delete)
 		{

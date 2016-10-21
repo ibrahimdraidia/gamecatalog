@@ -3,16 +3,16 @@
  */
 package view;
 
+import db.EditorHandler;
+import entity.Editor;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.BorderFactory;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-
-import model.EditorTableModel;
-import model.GameTableModel;
 
 /**
  *
@@ -21,9 +21,12 @@ import model.GameTableModel;
 public class EditorTablePanel extends JPanel
 {
 	
-	private JTable table;
+	//private JTable table;
 	private JScrollPane scrollPane;
 	private LogoPanel leds;
+        
+        private JList editorJList;
+        private DefaultListModel listModel;
 
 	public EditorTablePanel(LogoPanel logoPanel)
 	{
@@ -33,19 +36,31 @@ public class EditorTablePanel extends JPanel
 
 	private void initObject()
 	{
-		this.setLayout(new BorderLayout());
+            
+                this.setLayout(new BorderLayout());
 		this.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
 		this.setBackground(Color.decode("#303030"));
-		//this.add(new TabPanel(leds), BorderLayout.WEST);
-
+                            
+                ArrayList<Editor> listEditor =  (ArrayList<Editor>) new EditorHandler().getAll();
+                listModel = new DefaultListModel();
+                
+                if(!listEditor.isEmpty())
+		{
+			for (int i = 0; i < listEditor.size(); i++) {
+				if(listEditor.get(i) != null)
+				{
+					listModel.addElement(listEditor.get(i));
+				}
+			}
+		}
+                
+                editorJList = new JList(listModel);
+                
+                scrollPane = new JScrollPane(editorJList);
 		
-		table = new JTable(new EditorTableModel());
-		
-
-		scrollPane = new JScrollPane(table);
-		//boxLayout.add(scrollPane);
-
-		//this.add(boxLayout);
 		this.add(scrollPane, BorderLayout.CENTER);
+		
+               
+            
 	}
 }

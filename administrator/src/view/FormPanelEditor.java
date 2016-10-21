@@ -19,6 +19,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
+import view.TabPanel;
+
 /**
  *
  * @author GamyGits
@@ -207,6 +209,9 @@ public class FormPanelEditor extends JPanel implements ActionListener
 			createEditorMap.put("name_editor", tf_name_editor.getText().toString());
 			//Parse hashtable into handeler class.
 			new EditorHandler().add(createEditorMap);
+                        
+                        TabPanel.editorRefresh();
+                        
 		}
 		else if (e.getSource() == update)
 		{
@@ -215,6 +220,8 @@ public class FormPanelEditor extends JPanel implements ActionListener
 			createEditorMap.put("name_editor", tf_name_editor.getText().toString());
 			//Parse hashtable into handeler class.
 			new EditorHandler().add(createEditorMap);
+                        
+                        TabPanel.editorRefresh();
 		}
 		else if (e.getSource() == delete)
 		{
