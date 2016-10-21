@@ -10,8 +10,6 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import javax.swing.text.View;
-import view.MainLogoPanel;
 
 /**
  *
@@ -26,9 +24,9 @@ public class MainTabPanel extends JPanel
 	JTabbedPane tabPanelDescription;
 	MainLogoPanel leds;
 
-	public MainTabPanel(MainLogoPanel logopanel)
+	public MainTabPanel(MainLogoPanel logoPanel)
 	{
-		leds = logopanel;
+		leds = logoPanel;
 		initGamePanel();
 	}
 
@@ -57,21 +55,21 @@ public class MainTabPanel extends JPanel
 				switch (tabPanelGame.getSelectedIndex()) {
 				case 0:
 					MainCenterPanel.tablePane.removeAll();
-					MainCenterPanel.tablePane.add(new TablePanelGame(new MainLogoPanel()), BorderLayout.CENTER);
+					MainCenterPanel.tablePane.add(new TablePanelGame(leds), BorderLayout.CENTER);
 					MainCenterPanel.tablePane.revalidate();
 					break;
 				case 1:
 					MainCenterPanel.tablePane.removeAll();
-					MainCenterPanel.tablePane.add(new TablePanelEditor(new MainLogoPanel()), BorderLayout.CENTER);
+					MainCenterPanel.tablePane.add(new TablePanelEditor(leds), BorderLayout.CENTER);
 					MainCenterPanel.tablePane.revalidate();
 					break;
 				case 2:
                                         MainCenterPanel.tablePane.removeAll();
-					MainCenterPanel.tablePane.add(new TablePanelDev(new MainLogoPanel()), BorderLayout.CENTER);
+					MainCenterPanel.tablePane.add(new TablePanelDev(leds), BorderLayout.CENTER);
 					MainCenterPanel.tablePane.revalidate();
                                         break;
 				case 3: MainCenterPanel.tablePane.removeAll();
-					MainCenterPanel.tablePane.add(new TablePanelPlatform(new MainLogoPanel()), BorderLayout.CENTER);
+					MainCenterPanel.tablePane.add(new TablePanelPlatform(leds), BorderLayout.CENTER);
 					MainCenterPanel.tablePane.revalidate();
                                         break;
 				case 4: break;

@@ -74,7 +74,7 @@ public class MainWindow extends JFrame
 		mainPanel.add(logoPanel, BorderLayout.NORTH);
 		//CenterPanel.tablePane.add(new TabPanel(new LogoPanel()),BorderLayout.WEST);
 		//CenterPanel.tablePane.add(new GameTablePanel(new LogoPanel()),BorderLayout.CENTER);
-		mainPanel.add(new MainCenterPanel(), BorderLayout.CENTER);
+		mainPanel.add(new MainCenterPanel(logoPanel), BorderLayout.CENTER);
 		//mainPanel.add(new GameTablePanel(logoPanel), BorderLayout.CENTER);
 	}
 
